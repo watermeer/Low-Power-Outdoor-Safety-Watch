@@ -1,0 +1,1625 @@
+/*!
+    \file    change log.txt
+    \brief   change log for GD32L23x firmware
+
+    \version 2026-02-02, V2.4.0, firmware for GD32L23x, add support for GD32L235
+*/
+
+/*
+    Copyright (c) 2026, GigaDevice Semiconductor Inc.
+
+    Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice, this 
+       list of conditions and the following disclaimer.
+    2. Redistributions in binary form must reproduce the above copyright notice, 
+       this list of conditions and the following disclaimer in the documentation 
+       and/or other materials provided with the distribution.
+    3. Neither the name of the copyright holder nor the names of its contributors 
+       may be used to endorse or promote products derived from this software without 
+       specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+OF SUCH DAMAGE.
+*/
+
+********************************** V2.4.0 2026-02-02 *****************************************************
+------------------------------------Module RCU------------------------------------------------------------
+Fix file:
+..\Firmware\GD32L23x_standard_peripheral\Source\gd32l23x_rcu.c
+fix reason:
+1. Timer 0,14,40 only for GD32L235, add macros for differentiation.
+V2.1.0:
+/* RCU_APB2RST */
+#define RCU_APB2RST_SYSCFGRST       BIT(0)                    /*!< system configuration reset */
+#define RCU_APB2RST_CMPRST          BIT(1)                    /*!< comparator reset */
+#define RCU_APB2RST_ADCRST          BIT(9)                    /*!< ADC reset */
+#define RCU_APB2RST_TIMER0RST       BIT(10)                   /*!< TIMER0 reset */
+#define RCU_APB2RST_TIMER8RST       BIT(11)                   /*!< TIMER8 reset */
+#define RCU_APB2RST_SPI0RST         BIT(12)                   /*!< SPI0 reset */
+#define RCU_APB2RST_USART0RST       BIT(14)                   /*!< USART0 reset */
+#define RCU_APB2RST_TIMER14RST      BIT(16)                   /*!< TIMER14 reset */
+#define RCU_APB2RST_TIMER40RST      BIT(17)                   /*!< TIMER40 reset */
+
+V2.2.0:
+/* RCU_APB2RST */
+#define RCU_APB2RST_SYSCFGRST       BIT(0)                    /*!< system configuration reset */
+#define RCU_APB2RST_CMPRST          BIT(1)                    /*!< comparator reset */
+#define RCU_APB2RST_ADCRST          BIT(9)                    /*!< ADC reset */
+#ifdef GD32L235
+#define RCU_APB2RST_TIMER0RST       BIT(10)                   /*!< TIMER0 reset */
+#endif/* GD32L235 */
+#define RCU_APB2RST_TIMER8RST       BIT(11)                   /*!< TIMER8 reset */
+#define RCU_APB2RST_SPI0RST         BIT(12)                   /*!< SPI0 reset */
+#define RCU_APB2RST_USART0RST       BIT(14)                   /*!< USART0 reset */
+#ifdef GD32L235
+#define RCU_APB2RST_TIMER14RST      BIT(16)                   /*!< TIMER14 reset */
+#define RCU_APB2RST_TIMER40RST      BIT(17)                   /*!< TIMER40 reset */
+#endif/* GD32L235 */
+---------------------------------------------------------------------------------------------------------
+V2.1.0:
+/* RCU_APB2EN */
+#define RCU_APB2EN_SYSCFGEN         BIT(0)                    /*!< system configuration clock enable */
+#define RCU_APB2EN_CMPEN            BIT(1)                    /*!< comparator clock enable */
+#define RCU_APB2EN_ADCEN            BIT(9)                    /*!< ADC interface clock enable */
+#define RCU_APB2EN_TIMER0EN         BIT(10)                   /*!< TIMER0 timer clock enable */
+#define RCU_APB2EN_TIMER8EN         BIT(11)                   /*!< TIMER8 timer clock enable */
+#define RCU_APB2EN_SPI0EN           BIT(12)                   /*!< SPI0 clock enable */
+#define RCU_APB2EN_USART0EN         BIT(14)                   /*!< USART0 clock enable */
+#define RCU_APB2EN_TIMER14EN        BIT(14)                   /*!< TIMER14 timer clock enable */
+#define RCU_APB2EN_TIMER40EN        BIT(40)                   /*!< TIMER40 timer clock enable */
+#define RCU_APB2EN_DBGMCUEN         BIT(22)                   /*!< DBGMCU clock enable */
+
+V2.2.0
+/* RCU_APB2EN */
+#define RCU_APB2EN_SYSCFGEN         BIT(0)                    /*!< system configuration clock enable */
+#define RCU_APB2EN_CMPEN            BIT(1)                    /*!< comparator clock enable */
+#define RCU_APB2EN_ADCEN            BIT(9)                    /*!< ADC interface clock enable */
+#ifdef GD32L235
+#define RCU_APB2EN_TIMER0EN         BIT(10)                   /*!< TIMER0 timer clock enable */
+#endif/* GD32L235 */
+#define RCU_APB2EN_TIMER8EN         BIT(11)                   /*!< TIMER8 timer clock enable */
+#define RCU_APB2EN_SPI0EN           BIT(12)                   /*!< SPI0 clock enable */
+#define RCU_APB2EN_USART0EN         BIT(14)                   /*!< USART0 clock enable */
+#ifdef GD32L235
+#define RCU_APB2EN_TIMER14EN        BIT(16)                   /*!< TIMER14 timer clock enable */
+#define RCU_APB2EN_TIMER40EN        BIT(17)                   /*!< TIMER40 timer clock enable */
+#endif/* GD32L235 */
+#define RCU_APB2EN_DBGMCUEN         BIT(22)                   /*!< DBGMCU clock enable */
+---------------------------------------------------------------------------------------------------------
+V2.1.0
+    /* APB2 peripherals */
+    RCU_SYSCFG  = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 0U),               /*!< SYSCFG clock */
+    RCU_CMP     = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 1U),               /*!< CMP clock */
+    RCU_ADC     = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 9U),               /*!< ADC clock */
+    RCU_TIMER0  = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 10U),              /*!< TIMER0 clock */
+    RCU_TIMER8  = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 11U),              /*!< TIMER8 clock */
+    RCU_SPI0    = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 12U),              /*!< SPI0 clock */
+    RCU_USART0  = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 14U),              /*!< USART0 clock */
+    RCU_TIMER14 = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 16U),              /*!< TIMER14 clock */
+    RCU_TIMER40 = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 17U),              /*!< TIMER40 clock */
+    RCU_DBGMCU  = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 22U),              /*!< DBGMCU clock */
+
+V2.2.0
+    /* APB2 peripherals */
+    RCU_SYSCFG  = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 0U),               /*!< SYSCFG clock */
+    RCU_CMP     = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 1U),               /*!< CMP clock */
+    RCU_ADC     = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 9U),               /*!< ADC clock */
+#ifdef GD32L235
+    RCU_TIMER0  = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 10U),              /*!< TIMER0 clock */
+#endif/* GD32L235 */
+
+    RCU_TIMER8  = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 11U),              /*!< TIMER8 clock */
+    RCU_SPI0    = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 12U),              /*!< SPI0 clock */
+    RCU_USART0  = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 14U),              /*!< USART0 clock */
+#ifdef GD32L235
+    RCU_TIMER14 = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 16U),              /*!< TIMER14 clock */
+    RCU_TIMER40 = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 17U),              /*!< TIMER40 clock */
+#endif/* GD32L235 */
+    RCU_DBGMCU  = RCU_REGIDX_BIT(APB2EN_REG_OFFSET, 22U),              /*!< DBGMCU clock */
+------------------------------------------------------------------------------------------------------------
+V2.1.0
+    /* APB2 peripherals reset */
+    RCU_SYSCFGRST  = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 0U),             /*!< SYSCFG reset */
+    RCU_CMPRST     = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 1U),             /*!< CMP reset */
+    RCU_ADCRST     = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 9U),             /*!< ADC reset */
+    RCU_TIMER0RST  = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 10U),            /*!< TIMER0 reset */
+    RCU_TIMER8RST  = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 11U),            /*!< TIMER8 reset */
+    RCU_SPI0RST    = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 12U),            /*!< SPI0 reset */
+    RCU_USART0RST  = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 14U),            /*!< USART0 reset */
+    RCU_TIMER14RST  = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 16U),           /*!< TIMER14 reset */
+    RCU_TIMER40RST  = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 17U),           /*!< TIMER40 reset */
+
+V2.2.0
+    /* APB2 peripherals reset */
+    RCU_SYSCFGRST  = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 0U),             /*!< SYSCFG reset */
+    RCU_CMPRST     = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 1U),             /*!< CMP reset */
+    RCU_ADCRST     = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 9U),             /*!< ADC reset */
+#ifdef GD32L235
+    RCU_TIMER0RST  = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 10U),            /*!< TIMER0 reset */
+#endif/* GD32L235 */
+    RCU_TIMER8RST  = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 11U),            /*!< TIMER8 reset */
+    RCU_SPI0RST    = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 12U),            /*!< SPI0 reset */
+    RCU_USART0RST  = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 14U),            /*!< USART0 reset */
+#ifdef GD32L235
+    RCU_TIMER14RST  = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 16U),           /*!< TIMER14 reset */
+    RCU_TIMER40RST  = RCU_REGIDX_BIT(APB2RST_REG_OFFSET, 17U),           /*!< TIMER40 reset */
+#endif/* GD32L235 */
+-----------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------RTC---------------------------------------------------------
+Fix file:
+..\Firmware\GD32L23x_standard_peripheral\Source\gd32l23x_rtc.c
+..\Firmware\GD32L23x_standard_peripheral\Source\gd32l23x_rtc.h
+fix reason:
+1. RTC CTL register add LXTALSTBRST bit
+V2.1.0:
+None
+
+V2.2.0:
+/*!
+    \brief      enable LXTAL stabilization reset
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+void rtc_lxtal_stab_reset_enable(void)
+{
+    RTC_CTL |= RTC_CTL_LXTALSTBRST;
+}
+
+/*!
+    \brief      disable LXTAL stabilization reset
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+void rtc_lxtal_stab_reset_disable(void)
+{
+    RTC_CTL &= ~RTC_CTL_LXTALSTBRST;
+}
+-------------------------------------------------------------------------------------------------------------
+V2.1.0
+None
+
+V2.2.0
+#define RTC_CTL_LXTALSTBRST         BIT(30)     /*!< external low-speed oscillator stabilization reset*/
+-------------------------------------------------------------------------------------------------------------
+V2.1.0
+None
+
+V2.2.0
+/* LXTAL stabilization reset,this workaround is only for Rev.Code E*/
+void rtc_lxtal_stab_reset_enable(void); 
+/* disable LXTAL stabilization reset */
+void rtc_lxtal_stab_reset_disable(void);
+-------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------Common-----------------------------------------------------
+Fix file:
+..\Firmware\CMSIS\GD\GD32L23x\Souce\system_gd32l23x.c
+
+fix reason:
+1. Add frequency switching patch and us delay patch
+V2.1.0:
+#define HXTALSTB_DELAY          {                                 \
+                                   volatile uint32_t i;           \
+                                   for(i=0; i<0x2000; i++){       \
+                                   }                              \
+                                }
+
+#define SEL_IRC16M      0x00
+#define SEL_HXTAL       0x01
+#define SEL_PLL         0x02
+#define SEL_IRC32K      0x03
+
+/* set the system clock frequency and declare the system clock configuration function */
+#ifdef __SYSTEM_CLOCK_8M_HXTAL
+uint32_t SystemCoreClock = __SYSTEM_CLOCK_8M_HXTAL;
+static void system_clock_8m_hxtal(void);
+
+#elif defined (__SYSTEM_CLOCK_64M_PLL_HXTAL)
+uint32_t SystemCoreClock = __SYSTEM_CLOCK_64M_PLL_HXTAL;
+static void system_clock_64m_hxtal(void);
+
+#elif defined (__SYSTEM_CLOCK_64M_PLL_IRC16M)
+uint32_t SystemCoreClock = __SYSTEM_CLOCK_64M_PLL_IRC16M;
+static void system_clock_64m_irc16m(void);
+
+#else
+uint32_t SystemCoreClock = __SYSTEM_CLOCK_16M_IRC16M;
+static void system_clock_16m_irc16m(void);
+#endif /* __SYSTEM_CLOCK_16M_HXTAL */
+
+/* configure the system clock */
+static void system_clock_config(void);
+
+/*!
+    \brief      setup the microcontroller system, initialize the system
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+void SystemInit(void)
+{
+    /* enable IRC16M */
+    RCU_CTL |= RCU_CTL_IRC16MEN;
+    while(0U == (RCU_CTL & RCU_CTL_IRC16MSTB)) {
+    }
+    RCU_CFG0 &= ~RCU_CFG0_SCS;
+#ifdef  GD32L235
+    RCU_CFG1 &= ~RCU_CFG1_SCS_2;
+#endif
+    RCU_CTL &= ~(RCU_CTL_HXTALEN | RCU_CTL_CKMEN | RCU_CTL_PLLEN | RCU_CTL_HXTALBPS);
+    /* reset RCU */
+    RCU_CFG0 &= ~(RCU_CFG0_SCS | RCU_CFG0_AHBPSC | RCU_CFG0_APB1PSC | RCU_CFG0_APB2PSC | \
+                  RCU_CFG0_ADCPSC | RCU_CFG0_CKOUTSEL | RCU_CFG0_CKOUTDIV);
+    RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF | RCU_CFG0_PLLMF_6 | RCU_CFG0_PLLDV);
+
+    RCU_CFG1 &= ~(RCU_CFG1_PREDV);
+#ifdef  GD32L235
+    RCU_CFG1 &= ~RCU_CFG1_SCS_2;
+#endif
+    RCU_CFG2 = 0x00000000U;
+    RCU_INT = 0x00000000U;
+
+    /* configure system clock */
+    system_clock_config();
+
+#ifdef VECT_TAB_SRAM
+    nvic_vector_table_set(NVIC_VECTTAB_RAM, VECT_TAB_OFFSET);
+#else
+    nvic_vector_table_set(NVIC_VECTTAB_FLASH, VECT_TAB_OFFSET);
+#endif
+}
+
+/*!
+    \brief      configure the system clock
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+static void system_clock_config(void)
+{
+#ifdef __SYSTEM_CLOCK_8M_HXTAL
+    system_clock_8m_hxtal();
+#elif defined (__SYSTEM_CLOCK_64M_PLL_HXTAL)
+    system_clock_64m_hxtal();
+#elif defined (__SYSTEM_CLOCK_64M_PLL_IRC16M)
+    system_clock_64m_irc16m();
+#else
+    system_clock_16m_irc16m();
+#endif /* __SYSTEM_CLOCK_16M_HXTAL */
+}
+
+#ifdef __SYSTEM_CLOCK_8M_HXTAL
+/*!
+    \brief      configure the system clock to 8M by HXTAL
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+static void system_clock_8m_hxtal(void)
+{
+    uint32_t timeout = 0U;
+    uint32_t stab_flag = 0U;
+
+    /* enable HXTAL */
+    RCU_CTL |= RCU_CTL_HXTALEN;
+    HXTALSTB_DELAY
+    /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+    do {
+        timeout++;
+        stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+    } while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+    /* if fail */
+    if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)) {
+        while(1) {
+        }
+    }
+
+    /* HXTAL is stable */
+    /* AHB = SYSCLK */
+    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+    /* APB2 = AHB */
+    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+    /* APB1 = AHB */
+    RCU_CFG0 |= RCU_APB1_CKAHB_DIV1;
+
+    /* select HXTAL as system clock */
+    RCU_CFG0 &= ~RCU_CFG0_SCS;
+    RCU_CFG0 |= RCU_CKSYSSRC_HXTAL;
+
+    /* wait until HXTAL is selected as system clock */
+    while((RCU_CFG0 & RCU_CFG0_SCSS) != RCU_SCSS_HXTAL) {
+    }
+}
+
+#elif defined (__SYSTEM_CLOCK_64M_PLL_HXTAL)
+/*!
+    \brief      configure the system clock to 64M by PLL which selects HXTAL as its clock source
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+static void system_clock_64m_hxtal(void)
+{
+    uint32_t timeout = 0U;
+    uint32_t stab_flag = 0U;
+
+    /* enable HXTAL */
+    RCU_CTL |= RCU_CTL_HXTALEN;
+    HXTALSTB_DELAY
+    /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+    do {
+        timeout++;
+        stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+    } while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+    /* if fail */
+    if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)) {
+        while(1) {
+        }
+    }
+        
+#ifdef  GD32L235
+    /* set the wait state counter value */
+    FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | FMC_WAIT_STATE_2;
+#else
+    /* set the wait state counter value */
+    FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | FMC_WAIT_STATE_1;
+# endif
+
+
+    /* HXTAL is stable */
+    /* AHB = SYSCLK */
+    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+    /* APB2 = AHB */
+    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+    /* APB1 = AHB/2 */
+    RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+
+    RCU_CFG1 &= ~(RCU_CFG1_PREDV);
+    /* PLL = HXTAL * 8 = 64 MHz */
+    RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF | RCU_CFG0_PLLDV);
+    RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL8);
+
+    /* enable PLL */
+    RCU_CTL |= RCU_CTL_PLLEN;
+
+    /* wait until PLL is stable */
+    while(0U == (RCU_CTL & RCU_CTL_PLLSTB)) {
+    }
+
+    /* select PLL as system clock */
+    RCU_CFG0 &= ~RCU_CFG0_SCS;
+    RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+
+    /* wait until PLL is selected as system clock */
+    while((RCU_CFG0 & RCU_CFG0_SCSS) != RCU_SCSS_PLL) {
+    }
+}
+
+#elif defined (__SYSTEM_CLOCK_64M_PLL_IRC16M)
+/*!
+    \brief      configure the system clock to 72M by PLL which selects IRC16M/2 as its clock source
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+static void system_clock_64m_irc16m(void)
+{
+    uint32_t timeout = 0U;
+    uint32_t stab_flag = 0U;
+
+    /* enable IRC16M */
+    RCU_CTL |= RCU_CTL_IRC16MEN;
+
+    /* wait until IRC16M is stable or the startup time is longer than IRC16M_STARTUP_TIMEOUT */
+    do {
+        timeout++;
+        stab_flag = (RCU_CTL & RCU_CTL_IRC16MSTB);
+    } while((0U == stab_flag) && (IRC16M_STARTUP_TIMEOUT != timeout));
+
+    /* if fail */
+    if(0U == (RCU_CTL & RCU_CTL_IRC16MSTB)) {
+        while(1) {
+        }
+    }
+
+
+#ifdef  GD32L235
+    /* set the wait state counter value */
+    FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | FMC_WAIT_STATE_2;
+#else
+    /* set the wait state counter value */
+    FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | FMC_WAIT_STATE_1;
+# endif
+
+
+    /* AHB = SYSCLK */
+    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+    /* APB2 = AHB */
+    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+    /* APB1 = AHB/2 */
+    RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+
+    RCU_CFG1 &= ~(RCU_CFG1_PREDV);
+    /* PLL = IRC16M * 4 = 64 MHz */
+    RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF);
+    RCU_CFG0 |= (RCU_PLLSRC_IRC16M | RCU_PLL_MUL4);
+
+    /* enable PLL */
+    RCU_CTL |= RCU_CTL_PLLEN;
+
+    /* wait until PLL is stable */
+    while(0U == (RCU_CTL & RCU_CTL_PLLSTB)) {
+    }
+
+    /* select PLL as system clock */
+    RCU_CFG0 &= ~RCU_CFG0_SCS;
+    RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+
+    /* wait until PLL is selected as system clock */
+    while((RCU_CFG0 & RCU_CFG0_SCSS) != RCU_SCSS_PLL) {
+    }
+}
+
+#else
+/*!
+    \brief      configure the system clock to 16M by IRC16M
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+static void system_clock_16m_irc16m(void)
+{
+    /* AHB = SYSCLK */
+    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+    /* APB2 = AHB */
+    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+    /* APB1 = AHB */
+    RCU_CFG0 |= RCU_APB1_CKAHB_DIV1;
+
+    /* select IRC16M as system clock */
+    RCU_CFG0 &= ~RCU_CFG0_SCS;
+    RCU_CFG0 |= RCU_CKSYSSRC_IRC16M;
+
+    /* wait until IRC16M is selected as system clock */
+    while((RCU_CFG0 & RCU_CFG0_SCSS) != RCU_SCSS_IRC16M) {
+    }
+}
+#endif /* __SYSTEM_CLOCK_16M_HXTAL */
+
+V2.2.0:
+#define HXTALSTB_DELAY          {                                 \
+                                   volatile uint32_t i;           \
+                                   for(i=0; i<0x2000; i++){       \
+                                   }                              \
+                                }
+
+/* The following is to prevent Vcore fluctuations caused by frequency switching. 
+   It is strongly recommended to include it to avoid issues caused by self-removal. */
+#define RCU_MODIFY_DE_2(__delay)  do{                                     \
+                                      volatile uint32_t i,reg;            \
+                                      if(0 != __delay){                   \
+                                          /* Insert a software delay */   \
+                                          for(i=0; i<__delay; i++){       \
+                                          }                               \
+                                          reg = RCU_CFG0;                 \
+                                          reg &= ~(RCU_CFG0_AHBPSC);     \
+                                          reg |= RCU_AHB_CKSYS_DIV2;     \
+                                          /* AHB = SYSCLK/2 */           \
+                                          RCU_CFG0 = reg;                \
+                                          /* Insert a software delay */  \
+                                          for(i=0; i<__delay; i++){      \
+                                          }                              \
+                                          reg = RCU_CFG0;                \
+                                          reg &= ~(RCU_CFG0_AHBPSC);     \
+                                          reg |= RCU_AHB_CKSYS_DIV4;     \
+                                          /* AHB = SYSCLK/4 */           \
+                                          RCU_CFG0 = reg;                \
+                                          /* Insert a software delay */  \
+                                          for(i=0; i<__delay; i++){      \
+                                          }                              \
+                                      }                                  \
+                                  }while(0)
+
+#define SEL_IRC16M      0x00
+#define SEL_HXTAL       0x01
+#define SEL_PLL         0x02
+#define SEL_IRC32K      0x03
+
+/* set the system clock frequency and declare the system clock configuration function */
+#ifdef __SYSTEM_CLOCK_8M_HXTAL
+uint32_t SystemCoreClock = __SYSTEM_CLOCK_8M_HXTAL;
+static void system_clock_8m_hxtal(void);
+
+#elif defined (__SYSTEM_CLOCK_64M_PLL_HXTAL)
+uint32_t SystemCoreClock = __SYSTEM_CLOCK_64M_PLL_HXTAL;
+static void system_clock_64m_hxtal(void);
+
+#elif defined (__SYSTEM_CLOCK_64M_PLL_IRC16M)
+uint32_t SystemCoreClock = __SYSTEM_CLOCK_64M_PLL_IRC16M;
+static void system_clock_64m_irc16m(void);
+
+#else
+uint32_t SystemCoreClock = __SYSTEM_CLOCK_16M_IRC16M;
+static void system_clock_16m_irc16m(void);
+#endif /* __SYSTEM_CLOCK_16M_HXTAL */
+
+/* configure the system clock */
+static void system_clock_config(void);
+/* software delay to prevent the impact of Vcore fluctuations.
+   It is strongly recommended to include it to avoid issues caused by self-removal. */
+static void _soft_delay_(uint32_t time)
+{
+    __IO uint32_t i;
+    for(i=0; i<time*10; i++){
+    }
+}
+
+/*!
+    \brief      setup the microcontroller system, initialize the system
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+void SystemInit(void)
+{
+    /* enable IRC16M */
+    RCU_CTL |= RCU_CTL_IRC16MEN;
+    while(0U == (RCU_CTL & RCU_CTL_IRC16MSTB)) {
+    }
+    if(((RCU_CFG0 & RCU_CFG0_SCSS) == RCU_SCSS_PLL)){
+        RCU_MODIFY_DE_2(0x50);
+    }
+    RCU_CFG0 &= ~RCU_CFG0_SCS;
+    _soft_delay_(10);
+#ifdef  GD32L235
+    RCU_CFG1 &= ~RCU_CFG1_SCS_2;
+#endif
+    RCU_CTL &= ~(RCU_CTL_HXTALEN | RCU_CTL_CKMEN | RCU_CTL_PLLEN | RCU_CTL_HXTALBPS);
+    /* reset RCU */
+    RCU_CFG0 &= ~(RCU_CFG0_SCS | RCU_CFG0_AHBPSC | RCU_CFG0_APB1PSC | RCU_CFG0_APB2PSC | \
+                  RCU_CFG0_ADCPSC | RCU_CFG0_CKOUTSEL | RCU_CFG0_CKOUTDIV);
+    RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF | RCU_CFG0_PLLMF_6 | RCU_CFG0_PLLDV);
+
+    RCU_CFG1 &= ~(RCU_CFG1_PREDV);
+#ifdef  GD32L235
+    RCU_CFG1 &= ~RCU_CFG1_SCS_2;
+#endif
+    RCU_CFG2 = 0x00000000U;
+    RCU_INT = 0x00000000U;
+
+    /* configure system clock */
+    system_clock_config();
+
+#ifdef VECT_TAB_SRAM
+    nvic_vector_table_set(NVIC_VECTTAB_RAM, VECT_TAB_OFFSET);
+#else
+    nvic_vector_table_set(NVIC_VECTTAB_FLASH, VECT_TAB_OFFSET);
+#endif
+}
+
+/*!
+    \brief      configure the system clock
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+static void system_clock_config(void)
+{
+#ifdef __SYSTEM_CLOCK_8M_HXTAL
+    system_clock_8m_hxtal();
+#elif defined (__SYSTEM_CLOCK_64M_PLL_HXTAL)
+    system_clock_64m_hxtal();
+#elif defined (__SYSTEM_CLOCK_64M_PLL_IRC16M)
+    system_clock_64m_irc16m();
+#else
+    system_clock_16m_irc16m();
+#endif /* __SYSTEM_CLOCK_16M_HXTAL */
+}
+
+#ifdef __SYSTEM_CLOCK_8M_HXTAL
+/*!
+    \brief      configure the system clock to 8M by HXTAL
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+static void system_clock_8m_hxtal(void)
+{
+    uint32_t timeout = 0U;
+    uint32_t stab_flag = 0U;
+    __IO uint32_t reg_temp;
+
+    /* enable HXTAL */
+    RCU_CTL |= RCU_CTL_HXTALEN;
+    HXTALSTB_DELAY
+    /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+    do {
+        timeout++;
+        stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+    } while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+    /* if fail */
+    if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)) {
+        while(1) {
+        }
+    }
+
+    /* HXTAL is stable */
+    /* AHB = SYSCLK */
+    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+    /* APB2 = AHB */
+    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+    /* APB1 = AHB */
+    RCU_CFG0 |= RCU_APB1_CKAHB_DIV1;
+
+    reg_temp = RCU_CFG0;
+    /* select HXTAL as system clock */
+    reg_temp &= ~RCU_CFG0_SCS;
+    reg_temp |= RCU_CKSYSSRC_HXTAL;
+    RCU_CFG0 = reg_temp;
+
+    /* wait until HXTAL is selected as system clock */
+    while((RCU_CFG0 & RCU_CFG0_SCSS) != RCU_SCSS_HXTAL) {
+    }
+}
+
+#elif defined (__SYSTEM_CLOCK_64M_PLL_HXTAL)
+/*!
+    \brief      configure the system clock to 64M by PLL which selects HXTAL as its clock source
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+static void system_clock_64m_hxtal(void)
+{
+    uint32_t timeout = 0U;
+    uint32_t stab_flag = 0U;
+    __IO uint32_t reg_temp;
+
+    /* enable HXTAL */
+    RCU_CTL |= RCU_CTL_HXTALEN;
+    HXTALSTB_DELAY
+    /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+    do {
+        timeout++;
+        stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+    } while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+    /* if fail */
+    if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)) {
+        while(1) {
+        }
+    }
+        
+#ifdef  GD32L235
+    /* set the wait state counter value */
+    FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | FMC_WAIT_STATE_2;
+#else
+    /* set the wait state counter value */
+    FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | FMC_WAIT_STATE_1;
+#endif
+
+
+    /* HXTAL is stable */
+    /* AHB = SYSCLK */
+    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+    /* APB2 = AHB */
+    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+    /* APB1 = AHB/2 */
+    RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+
+    RCU_CFG1 &= ~(RCU_CFG1_PREDV);
+    /* PLL = HXTAL * 8 = 64 MHz */
+    RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF | RCU_CFG0_PLLDV);
+    RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL8);
+
+    /* enable PLL */
+    RCU_CTL |= RCU_CTL_PLLEN;
+
+    /* wait until PLL is stable */
+    while(0U == (RCU_CTL & RCU_CTL_PLLSTB)) {
+    }
+
+    reg_temp = RCU_CFG0;
+    /* select PLL as system clock */
+    reg_temp &= ~RCU_CFG0_SCS;
+    reg_temp |= RCU_CKSYSSRC_PLL;
+    RCU_CFG0 = reg_temp;
+
+    /* wait until PLL is selected as system clock */
+    while((RCU_CFG0 & RCU_CFG0_SCSS) != RCU_SCSS_PLL) {
+    }
+}
+
+#elif defined (__SYSTEM_CLOCK_64M_PLL_IRC16M)
+/*!
+    \brief      configure the system clock to 72M by PLL which selects IRC16M/2 as its clock source
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+static void system_clock_64m_irc16m(void)
+{
+    uint32_t timeout = 0U;
+    uint32_t stab_flag = 0U;
+    __IO uint32_t reg_temp;
+
+    /* enable IRC16M */
+    RCU_CTL |= RCU_CTL_IRC16MEN;
+
+    /* wait until IRC16M is stable or the startup time is longer than IRC16M_STARTUP_TIMEOUT */
+    do {
+        timeout++;
+        stab_flag = (RCU_CTL & RCU_CTL_IRC16MSTB);
+    } while((0U == stab_flag) && (IRC16M_STARTUP_TIMEOUT != timeout));
+
+    /* if fail */
+    if(0U == (RCU_CTL & RCU_CTL_IRC16MSTB)) {
+        while(1) {
+        }
+    }
+
+#ifdef  GD32L235
+    /* set the wait state counter value */
+    FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | FMC_WAIT_STATE_2;
+#else
+    /* set the wait state counter value */
+    FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | FMC_WAIT_STATE_1;
+#endif
+
+    /* AHB = SYSCLK */
+    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+    /* APB2 = AHB */
+    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+    /* APB1 = AHB/2 */
+    RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+
+    RCU_CFG1 &= ~(RCU_CFG1_PREDV);
+    /* PLL = IRC16M * 4 = 64 MHz */
+    RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF);
+    RCU_CFG0 |= (RCU_PLLSRC_IRC16M | RCU_PLL_MUL4);
+
+    /* enable PLL */
+    RCU_CTL |= RCU_CTL_PLLEN;
+
+    /* wait until PLL is stable */
+    while(0U == (RCU_CTL & RCU_CTL_PLLSTB)) {
+    }
+
+    reg_temp = RCU_CFG0;
+    /* select PLL as system clock */
+    reg_temp &= ~RCU_CFG0_SCS;
+    reg_temp |= RCU_CKSYSSRC_PLL;
+    RCU_CFG0 = reg_temp;
+
+    /* wait until PLL is selected as system clock */
+    while((RCU_CFG0 & RCU_CFG0_SCSS) != RCU_SCSS_PLL) {
+    }
+}
+
+#else
+/*!
+    \brief      configure the system clock to 16M by IRC16M
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+static void system_clock_16m_irc16m(void)
+{
+    __IO uint32_t reg_temp;
+    /* AHB = SYSCLK */
+    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+    /* APB2 = AHB */
+    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+    /* APB1 = AHB */
+    RCU_CFG0 |= RCU_APB1_CKAHB_DIV1;
+
+    reg_temp = RCU_CFG0;
+    /* select IRC16M as system clock */
+    reg_temp &= ~RCU_CFG0_SCS;
+    reg_temp |= RCU_CKSYSSRC_IRC16M;
+    RCU_CFG0 = reg_temp;
+
+    /* wait until IRC16M is selected as system clock */
+    while((RCU_CFG0 & RCU_CFG0_SCSS) != RCU_SCSS_IRC16M) {
+    }
+}
+#endif /* __SYSTEM_CLOCK_16M_HXTAL */
+----------------------------------------------------------------------------------------------------------
+
+---------------------------------------Module RCU--------------------------------------------------------
+Fix file:
+..\GD32L23x_Firmware_Library\Examples\RCU\System_clock_switch\main.c
+fix reason:
+1. Add frequency switching patch and us delay patch.
+V2.1.0:
+
+static void _delay(uint32_t timeout);
+static void switch_system_clock_to_36m_hxtal(void);
+static void switch_system_clock_to_64m_irc16m(void);
+
+/*!
+    \brief      main function
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+int main(void)
+{
+    /* initialize the USART */
+    gd_eval_com_init(EVAL_COM);
+    printf("\r\nCK_SYS switch test demo\r\n");
+
+    /* disable the USART */
+    usart_disable(EVAL_COM);
+
+    /* switch system clock to 36MHz by HXTAL */
+    switch_system_clock_to_36m_hxtal();
+    gd_eval_com_init(EVAL_COM);
+    /* print out the clock frequency of system */
+    printf("\r\nCK_SYS is %d", rcu_clock_freq_get(CK_SYS));
+
+    _delay(1000);
+
+    /* switch system clock to 64MHz by IRC16M */
+    switch_system_clock_to_64m_irc16m();
+    gd_eval_com_init(EVAL_COM);
+    /* print out the clock frequency of system */
+    printf("\r\nCK_SYS is %d", rcu_clock_freq_get(CK_SYS));
+
+    while(1) {
+    }
+}
+
+/*!
+    \brief      delay function
+    \param[in]  timeout: time out
+    \param[out] none
+    \retval     none
+*/
+static void _delay(uint32_t timeout)
+{
+    __IO uint32_t i, j;
+    for(i = 0; i < timeout; i++) {
+        for(j = 0; j < 500; j++) {
+        }
+    }
+}
+
+/*!
+    \brief      switch system clock to 36M by HXTAL
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+static void switch_system_clock_to_36m_hxtal(void)
+{
+    uint32_t timeout = 0U;
+    uint32_t stab_flag = 0U;
+
+    /* select IRC16M as system clock source, deinitialize the RCU */
+    rcu_system_clock_source_config(RCU_CKSYSSRC_IRC16M);
+    rcu_deinit();
+    /* enable HXTAL */
+    RCU_CTL |= RCU_CTL_HXTALEN;
+
+    /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+    do {
+        timeout++;
+        stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+    } while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+
+    /* if fail */
+    if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)) {
+        while(1) {
+        }
+    }
+
+    FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | WS_WSCNT(1);
+
+    /* HXTAL is stable */
+    /* AHB = SYSCLK */
+    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+    /* APB2 = AHB/1 */
+    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+    /* APB1 = AHB/2 */
+    RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+
+    /* PLL = HXTAL / 2 * 9 = 36 MHz */
+    RCU_CFG0 &= ~(RCU_CFG0_PLLMF | RCU_CFG0_PLLMF_6);
+    RCU_CFG1 &= ~RCU_CFG1_PREDV;
+    RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL9);
+    RCU_CFG1 |= RCU_PLL_PREDV2;
+    /* enable PLL */
+    RCU_CTL |= RCU_CTL_PLLEN;
+
+    /* wait until PLL is stable */
+    while(0U == (RCU_CTL & RCU_CTL_PLLSTB)) {
+    }
+
+    /* select PLL as system clock */
+    RCU_CFG0 &= ~RCU_CFG0_SCS;
+    RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+
+    /* wait until PLL is selected as system clock */
+    while(0U == (RCU_CFG0 & RCU_SCSS_PLL)) {
+    }
+}
+
+/*!
+    \brief      switch system clock to 64M by IRC16M
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+static void switch_system_clock_to_64m_irc16m(void)
+{
+    uint32_t timeout = 0U;
+    uint32_t stab_flag = 0U;
+
+    /* select IRC16M as system clock source, deinitialize the RCU */
+    rcu_system_clock_source_config(RCU_CKSYSSRC_IRC16M);
+    rcu_deinit();
+
+    /* enable IRC16M */
+    RCU_CTL |= RCU_CTL_IRC16MEN;
+
+    /* wait until IRC16M is stable or the startup time is longer than IRC16M_STARTUP_TIMEOUT */
+    do {
+        timeout++;
+        stab_flag = (RCU_CTL & RCU_CTL_IRC16MSTB);
+    } while((0U == stab_flag) && (IRC16M_STARTUP_TIMEOUT != timeout));
+
+    /* if fail */
+    if(0U == (RCU_CTL & RCU_CTL_IRC16MSTB)) {
+        while(1) {
+        }
+    }
+
+    /* set the wait state counter value */
+    FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | FMC_WAIT_STATE_1;
+
+    /* AHB = SYSCLK */
+    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+    /* APB2 = AHB */
+    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+    /* APB1 = AHB/2 */
+    RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+
+    /* PLL = (IRC16M/2) * 8 = 64 MHz */
+    RCU_CFG1 &= ~(RCU_CFG1_PREDV);
+    RCU_CFG1 |= RCU_PLL_PREDV2;
+    RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF);
+    RCU_CFG0 |= (RCU_PLLSRC_IRC16M | RCU_PLL_MUL8);
+
+    /* enable PLL */
+    RCU_CTL |= RCU_CTL_PLLEN;
+
+    /* wait until PLL is stable */
+    while(0U == (RCU_CTL & RCU_CTL_PLLSTB)) {
+    }
+
+    /* select PLL as system clock */
+    RCU_CFG0 &= ~RCU_CFG0_SCS;
+    RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+
+    /* wait until PLL is selected as system clock */
+    while(0U == (RCU_CFG0 & RCU_SCSS_PLL)) {
+    }
+}
+
+V2.2.0:
+/* The following is to prevent Vcore fluctuations caused by frequency switching. 
+   It is strongly recommended to include it to avoid issues caused by self-removal. */
+#define RCU_MODIFY_DE_2(__delay)  do{                                     \
+                                      volatile uint32_t i,reg;            \
+                                      if(0 != __delay){                   \
+                                          /* Insert a software delay */   \
+                                          for(i=0; i<__delay; i++){       \
+                                          }                               \
+                                          reg = RCU_CFG0;                 \
+                                          reg &= ~(RCU_CFG0_AHBPSC);     \
+                                          reg |= RCU_AHB_CKSYS_DIV2;     \
+                                          /* AHB = SYSCLK/2 */           \
+                                          RCU_CFG0 = reg;                \
+                                          /* Insert a software delay */  \
+                                          for(i=0; i<__delay; i++){      \
+                                          }                              \
+                                          reg = RCU_CFG0;                \
+                                          reg &= ~(RCU_CFG0_AHBPSC);     \
+                                          reg |= RCU_AHB_CKSYS_DIV4;     \
+                                          /* AHB = SYSCLK/4 */           \
+                                          RCU_CFG0 = reg;                \
+                                          /* Insert a software delay */  \
+                                          for(i=0; i<__delay; i++){      \
+                                          }                              \
+                                      }                                  \
+                                  }while(0)
+
+static void _delay(uint32_t timeout);
+static void switch_system_clock_to_36m_hxtal(void);
+static void switch_system_clock_to_64m_irc16m(void);
+/* software delay to prevent the impact of Vcore fluctuations.
+   It is strongly recommended to include it to avoid issues caused by self-removal. */
+static void _soft_delay_(uint32_t time)
+{
+    __IO uint32_t i;
+    for(i=0; i<time*10; i++){
+    }
+}
+
+/*!
+    \brief      main function
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+int main(void)
+{
+    /* initialize the USART */
+    gd_eval_com_init(EVAL_COM);
+    printf("\r\nCK_SYS switch test demo\r\n");
+
+    /* disable the USART */
+    usart_disable(EVAL_COM);
+
+    /* switch system clock to 36MHz by HXTAL */
+    switch_system_clock_to_36m_hxtal();
+    gd_eval_com_init(EVAL_COM);
+    /* print out the clock frequency of system */
+    printf("\r\nCK_SYS is %d", rcu_clock_freq_get(CK_SYS));
+
+    _delay(1000);
+
+    /* switch system clock to 64MHz by IRC16M */
+    switch_system_clock_to_64m_irc16m();
+    gd_eval_com_init(EVAL_COM);
+    /* print out the clock frequency of system */
+    printf("\r\nCK_SYS is %d", rcu_clock_freq_get(CK_SYS));
+
+    while(1) {
+    }
+}
+
+/*!
+    \brief      delay function
+    \param[in]  timeout: time out
+    \param[out] none
+    \retval     none
+*/
+static void _delay(uint32_t timeout)
+{
+    __IO uint32_t i, j;
+    for(i = 0; i < timeout; i++) {
+        for(j = 0; j < 500; j++) {
+        }
+    }
+}
+
+/*!
+    \brief      switch system clock to 36M by HXTAL
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+static void switch_system_clock_to_36m_hxtal(void)
+{
+    uint32_t timeout = 0U;
+    uint32_t stab_flag = 0U;
+
+    /* It is strongly recommended to use it to avoid issues caused by self-removal. */
+    RCU_MODIFY_DE_2(0x50);
+    /* select IRC16M as system clock source, deinitialize the RCU */
+    rcu_system_clock_source_config(RCU_CKSYSSRC_IRC16M);
+    /* It is strongly recommended to use it to avoid issues caused by self-removal. */
+    _soft_delay_(10);
+    rcu_deinit();
+    /* enable HXTAL */
+    RCU_CTL |= RCU_CTL_HXTALEN;
+
+    /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+    do {
+        timeout++;
+        stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+    } while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+
+    /* if fail */
+    if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)) {
+        while(1) {
+        }
+    }
+
+    FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | WS_WSCNT(1);
+
+    /* HXTAL is stable */
+    /* AHB = SYSCLK */
+    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+    /* APB2 = AHB/1 */
+    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+    /* APB1 = AHB/2 */
+    RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+
+    /* PLL = HXTAL / 2 * 9 = 36 MHz */
+    RCU_CFG0 &= ~(RCU_CFG0_PLLMF | RCU_CFG0_PLLMF_6);
+    RCU_CFG1 &= ~RCU_CFG1_PREDV;
+    RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL9);
+    RCU_CFG1 |= RCU_PLL_PREDV2;
+    /* enable PLL */
+    RCU_CTL |= RCU_CTL_PLLEN;
+
+    /* wait until PLL is stable */
+    while(0U == (RCU_CTL & RCU_CTL_PLLSTB)) {
+    }
+
+    /* select PLL as system clock */
+    RCU_CFG0 &= ~RCU_CFG0_SCS;
+    RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+
+    /* wait until PLL is selected as system clock */
+    while(0U == (RCU_CFG0 & RCU_SCSS_PLL)) {
+    }
+}
+
+/*!
+    \brief      switch system clock to 64M by IRC16M
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+static void switch_system_clock_to_64m_irc16m(void)
+{
+    uint32_t timeout = 0U;
+    uint32_t stab_flag = 0U;
+
+    /* It is strongly recommended to use it to avoid issues caused by self-removal. */
+    RCU_MODIFY_DE_2(0x50);
+    /* select IRC16M as system clock source, deinitialize the RCU */
+    rcu_system_clock_source_config(RCU_CKSYSSRC_IRC16M);
+    /* It is strongly recommended to use it to avoid issues caused by self-removal. */
+    _soft_delay_(10);
+    rcu_deinit();
+
+    /* enable IRC16M */
+    RCU_CTL |= RCU_CTL_IRC16MEN;
+
+    /* wait until IRC16M is stable or the startup time is longer than IRC16M_STARTUP_TIMEOUT */
+    do {
+        timeout++;
+        stab_flag = (RCU_CTL & RCU_CTL_IRC16MSTB);
+    } while((0U == stab_flag) && (IRC16M_STARTUP_TIMEOUT != timeout));
+
+    /* if fail */
+    if(0U == (RCU_CTL & RCU_CTL_IRC16MSTB)) {
+        while(1) {
+        }
+    }
+
+    /* set the wait state counter value */
+    FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | FMC_WAIT_STATE_1;
+
+    /* AHB = SYSCLK */
+    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+    /* APB2 = AHB */
+    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+    /* APB1 = AHB/2 */
+    RCU_CFG0 |= RCU_APB1_CKAHB_DIV2;
+
+    /* PLL = (IRC16M/2) * 8 = 64 MHz */
+    RCU_CFG1 &= ~(RCU_CFG1_PREDV);
+    RCU_CFG1 |= RCU_PLL_PREDV2;
+    RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF);
+    RCU_CFG0 |= (RCU_PLLSRC_IRC16M | RCU_PLL_MUL8);
+
+    /* enable PLL */
+    RCU_CTL |= RCU_CTL_PLLEN;
+
+    /* wait until PLL is stable */
+    while(0U == (RCU_CTL & RCU_CTL_PLLSTB)) {
+    }
+
+    /* select PLL as system clock */
+    RCU_CFG0 &= ~RCU_CFG0_SCS;
+    RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+
+    /* wait until PLL is selected as system clock */
+    while(0U == (RCU_CFG0 & RCU_SCSS_PLL)) {
+    }
+}
+----------------------------------------------------------------------------------------------------------
+--------------------------------------------------Common----------------------------------------------
+Fix file:
+..\Firmware\CMSIS\GD\GD32L23x\Include\gd32l23x.h
+fix reason:
+1. Software version update.
+V2.1.0:
+/* GD32L23x firmware library version number V2.1.0 */
+#define __GD32L23X_STDPERIPH_VERSION_MAIN   (0x02) /*!< [31:24] main version     */
+#define __GD32L23X_STDPERIPH_VERSION_SUB1   (0x01) /*!< [23:16] sub1 version     */
+#define __GD32L23X_STDPERIPH_VERSION_SUB2   (0x00) /*!< [15:8]  sub2 version     */
+#define __GD32L23X_STDPERIPH_VERSION_RC     (0x00) /*!< [7:0]  release candidate */
+
+V2.2.0:
+/* GD32L23x firmware library version number V2.2.0 */
+#define __GD32L23X_STDPERIPH_VERSION_MAIN   (0x02) /*!< [31:24] main version     */
+#define __GD32L23X_STDPERIPH_VERSION_SUB1   (0x02) /*!< [23:16] sub1 version     */
+#define __GD32L23X_STDPERIPH_VERSION_SUB2   (0x00) /*!< [15:8]  sub2 version     */
+#define __GD32L23X_STDPERIPH_VERSION_RC     (0x00) /*!< [7:0]  release candidate */
+----------------------------------------------------------------------------------------------------------
+--------------------------------------------------Common----------------------------------------------
+Fix file:
+..\GD32L23x_Firmware_Library\Utilities\gd32l23x_eval.c
+..\GD32L23x_Firmware_Library\Firmware\GD32L23x_standard_peripheral\Source\gd32l23x_misc.c
+..\GD32L23x_Firmware_Library\Firmware\GD32L23x_standard_peripheral\Source\gd32l23x_misc.h
+fix reason:
+1. change nvic_irq_enable/nvic_irq_disable function input parameter type to "IRQn_Type".
+V2.1.0:
+static const uint8_t KEY_IRQn[KEYn]             = {WAKEUP_KEY_EXTI_IRQn, TAMPER_KEY_EXTI_IRQn};
+
+V2.2.0:
+static const IRQn_Type KEY_IRQn[KEYn]       = {WAKEUP_KEY_EXTI_IRQn, TAMPER_KEY_EXTI_IRQn};
+------------------------------------------------------------------------------------------------------------
+V2.1.0:
+void nvic_irq_enable(uint8_t nvic_irq,
+                     uint8_t nvic_irq_priority)
+{
+    /* set the priority and enable the selected IRQ */
+    NVIC_SetPriority((IRQn_Type)nvic_irq, (uint32_t)nvic_irq_priority);
+    NVIC_EnableIRQ((IRQn_Type)nvic_irq);
+}
+
+/*!
+    \brief      disable NVIC request
+    \param[in]  nvic_irq: the NVIC interrupt request, detailed in IRQn_Type
+    \param[out] none
+    \retval     none
+*/
+void nvic_irq_disable(uint8_t nvic_irq)
+{
+    /* disable the selected IRQ.*/
+    NVIC_DisableIRQ((IRQn_Type)nvic_irq);
+}
+
+V2.2.0:
+void nvic_irq_enable(IRQn_Type nvic_irq,
+                     uint8_t nvic_irq_priority)
+{
+    /* set the priority and enable the selected IRQ */
+    NVIC_SetPriority(nvic_irq, (uint32_t)nvic_irq_priority);
+    NVIC_EnableIRQ(nvic_irq);
+}
+
+/*!
+    \brief      disable NVIC request
+    \param[in]  nvic_irq: the NVIC interrupt request, detailed in IRQn_Type
+    \param[out] none
+    \retval     none
+*/
+void nvic_irq_disable(IRQn_Type nvic_irq)
+{
+    /* disable the selected IRQ.*/
+    NVIC_DisableIRQ(nvic_irq);
+}
+------------------------------------------------------------------------------------------------------------
+V2.1.0
+/* enable NVIC request */
+void nvic_irq_enable(uint8_t nvic_irq, uint8_t nvic_irq_priority);
+/* disable NVIC request */
+void nvic_irq_disable(uint8_t nvic_irq);
+
+V2.2.0
+/* enable NVIC request */
+void nvic_irq_enable(IRQn_Type nvic_irq, uint8_t nvic_irq_priority);
+/* disable NVIC request */
+void nvic_irq_disable(IRQn_Type nvic_irq);
+------------------------------------------------------------------------------------------------------------
+--------------------------------------------------Common----------------------------------------------
+Fix file:
+..\*\gd32l23x_it.c
+fix reason:
+1. Delete redundant interrupt handles.
+V2.1.0
+/*!
+    \brief      this function handles MemManage exception
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+void MemManage_Handler(void)
+{
+    /* if Memory Manage exception occurs, go to infinite loop */
+    while(1) {
+    }
+}
+
+/*!
+    \brief      this function handles BusFault exception
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+void BusFault_Handler(void)
+{
+    /* if Bus Fault exception occurs, go to infinite loop */
+    while(1) {
+    }
+}
+
+/*!
+    \brief      this function handles UsageFault exception
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+void UsageFault_Handler(void)
+{
+    /* if Usage Fault exception occurs, go to infinite loop */
+    while(1) {
+    }
+}
+
+/*!
+    \brief      this function handles DebugMon exception
+    \param[in]  none
+    \param[out] none
+    \retval     none
+*/
+void DebugMon_Handler(void)
+{
+    /* if DebugMon exception occurs, go to infinite loop */
+    while(1) {
+    }
+}
+
+V2.2.0
+None
+
+--------------------------------------------------Common----------------------------------------------
+Fix file:
+../GD32L23x_Firmware_Library/Firmware/CMSIS/GD/GD32L23x/Source/ARM/startup_gd32l233.s
+../GD32L23x_Firmware_Library/Firmware/CMSIS/GD/GD32L23x/Source/ARM/startup_gd32l235.s
+../GD32L23x_Firmware_Library/Firmware/CMSIS/GD/GD32L23x/Source/IAR/startup_gd32l233.s
+../GD32L23x_Firmware_Library/Firmware/CMSIS/GD/GD32L23x/Source/IAR/startup_gd32l235.s
+fix reason:
+1. File name consistency modification
+V2.2.0:
+../GD32L23x_Firmware_Library/Firmware/CMSIS/GD/GD32L23x/Source/ARM/startup_gd32l233xx.s
+../GD32L23x_Firmware_Library/Firmware/CMSIS/GD/GD32L23x/Source/ARM/startup_gd32l235xx.s
+../GD32L23x_Firmware_Library/Firmware/CMSIS/GD/GD32L23x/Source/IAR/startup_gd32l233xx.s
+../GD32L23x_Firmware_Library/Firmware/CMSIS/GD/GD32L23x/Source/IAR/startup_gd32l235xx.s
+
+V2.3.0:
+../GD32L23x_Firmware_Library/Firmware/CMSIS/GD/GD32L23x/Source/ARM/startup_gd32l233.s
+../GD32L23x_Firmware_Library/Firmware/CMSIS/GD/GD32L23x/Source/ARM/startup_gd32l235.s
+../GD32L23x_Firmware_Library/Firmware/CMSIS/GD/GD32L23x/Source/IAR/startup_gd32l233.s
+../GD32L23x_Firmware_Library/Firmware/CMSIS/GD/GD32L23x/Source/IAR/startup_gd32l235.s
+------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------PMU----------------------------------------------
+Fix file:
+../GD32L23x_Firmware_Library/Firmware/GD32L23x_standard_peripheral/Source/gd32l23x_pmu.c
+fix reason:
+1. Code optimization void pmu_to_sleepmode(uint32_t lowdrive, uint8_t sleepmodecmd) function
+V2.2.0:
+void pmu_to_sleepmode(uint32_t lowdrive, uint8_t sleepmodecmd)
+{
+    /* clear sleepdeep bit of Cortex-M23 system control register */
+    SCB->SCR &= ~((uint32_t)SCB_SCR_SLEEPDEEP_Msk);
+
+    /* clear lowpower mode and low drive bits */
+    PMU_CTL0 &= ~((uint32_t)(PMU_CTL0_LPMOD | PMU_CTL0_LDNP));
+
+    /* configure low drive mode in Sleep mode */
+    if(PMU_LDNP_LOWDRIVE == lowdrive) {
+        PMU_CTL0 |= (uint32_t)(PMU_CTL0_LDNP);
+    }
+
+    /* select WFI or WFE command to enter sleep mode */
+    if(WFI_CMD == sleepmodecmd) {
+        __WFI();
+    } else {
+        __WFE();
+        __WFE();
+    }
+}
+
+V2.3.0:
+void pmu_to_sleepmode(uint32_t lowdrive, uint8_t sleepmodecmd)
+{
+    /* clear sleepdeep bit of Cortex-M23 system control register */
+    SCB->SCR &= ~((uint32_t)SCB_SCR_SLEEPDEEP_Msk);
+
+    /* clear lowpower mode and low drive bits */
+    PMU_CTL0 &= ~((uint32_t)(PMU_CTL0_LPMOD | PMU_CTL0_LDNP));
+
+    /* configure low drive mode in Sleep mode */
+    if(PMU_LDNP_LOWDRIVE == lowdrive) {
+        PMU_CTL0 |= (uint32_t)(PMU_CTL0_LDNP);
+    }
+
+    /* select WFI or WFE command to enter sleep mode */
+    if(WFI_CMD == sleepmodecmd) {
+        __WFI();
+    } else {
+        __SEV();
+        __WFE();
+        __WFE();
+    }
+}
+------------------------------------------------------------------------------------------------------------
+--------------------------------------------------CAN----------------------------------------------
+Fix file:
+../GD32L23x_Firmware_Library/Firmware/GD32L23x_standard_peripheral/Source/gd32l23x_can.c
+fix reason:
+1. Code optimization uint8_t can_message_transmit(can_trasnmit_message_struct *transmit_message) function
+V2.2.0:
+None
+
+V2.3.0:
+    /* Classic CAN frame data lenth does not exceed 8 */
+    if (transmit_message->tx_dlen > 8U) {
+        transmit_message->tx_dlen = 8U;
+    }
+}
+------------------------------------------------------------------------------------------------------------
+--------------------------------------------------FMC----------------------------------------------
+Fix file:
+../GD32L23x_Firmware_Library/Examples/FMC/Write_Protection/main.c
+fix reason:
+1. Bug fix for Write_Protection example
+V2.2.0:
+    #define FLASH_PAGE_SIZE        ((uint16_t)0x0400U)
+    #define FMC_PAGES_PROTECTED    (OB_WP_14 | OB_WP_15)
+    #define BANK_WRITE_START_ADDR  ((uint32_t)0x08005000U)
+    #define BANK_WRITE_END_ADDR    ((uint32_t)0x08005800U)
+
+V2.3.0:
+    #define FLASH_PAGE_SIZE        ((uint16_t)0x0400U)
+    #define FMC_PAGES_PROTECTED    (OB_WP_5 | OB_WP_6)
+    #define BANK_WRITE_START_ADDR  ((uint32_t)0x08005000U)
+    #define BANK_WRITE_END_ADDR    ((uint32_t)0x08007000U)
+}
+------------------------------------------------------------------------------------------------------------
+--------------------------------------------------I2C----------------------------------------------
+Fix file:
+../GD32L23x_Firmware_Library/Firmware/GD32L23x_standard_peripheral/Source/gd32l23x_i2c.c
+../GD32L23x_Firmware_Library/Firmware/GD32L23x_standard_peripheral/Include/gd32l23x_i2c.h
+fix reason:
+1. Delete function
+V2.2.0:
+/*!
+    \brief      generate an ACK in slave mode
+    \param[in]  i2c_periph: I2Cx(x=0,1,2)
+    \param[out] none
+    \retval     none
+*/
+void i2c_nack_disable(uint32_t i2c_periph)
+{
+    I2C_CTL1(i2c_periph) &= ~I2C_CTL1_NACKEN;
+}
+
+V2.3.0:
+None
+}
+------------------------------------------------------------------------------------------------------------
+--------------------------------------------------spi----------------------------------------------
+Fix file:
+../GD32L23x_Firmware_Library/Firmware/GD32L23x_standard_peripheral/Source/gd32l23x_spi.c
+fix reason:
+1. bug fix for FlagStatus spi_i2s_flag_get(uint32_t spi_periph, uint32_t flag) function
+V2.2.0:
+FlagStatus spi_i2s_flag_get(uint32_t spi_periph, uint32_t flag)
+{
+    if(RESET != (SPI_STAT(spi_periph) & flag)) {
+        return SET;
+    } else {
+        if(SPI0 == spi_periph) {
+            /* check TXFIFO is empty or not */
+            if(SPI_TXLVL_EMPTY == flag) {
+                if(RESET != (SPI_STAT(spi_periph) & SPI_TXLVL_EMPTY_MASK)) {
+                    return RESET;
+                } else {
+                    return SET;
+                }
+            }
+            /* check RXFIFO is empty or not */
+            if(SPI_RXLVL_EMPTY == flag) {
+                if(RESET != (SPI_STAT(spi_periph) & SPI_RXLVL_EMPTY_MASK)) {
+                    return RESET;
+                } else {
+                    return SET;
+                }
+            }
+        }
+        return RESET;
+    }
+}
+
+V2.3.0:
+FlagStatus spi_i2s_flag_get(uint32_t spi_periph, uint32_t flag)
+{
+    FlagStatus reval = RESET;
+    uint32_t reg = SPI_STAT(spi_periph);
+
+    switch(flag) {
+    case SPI_FLAG_TXLVL_EMPTY: 
+        if(0U == (reg & SPI_TXLVL_MASK)) {
+            reval = SET;
+        }
+        break;
+    case SPI_FLAG_TXLVL_QUARTER_FULL:
+    case SPI_FLAG_TXLVL_HALF_FULL:
+    case SPI_FLAG_TXLVL_FULL:
+        if(flag == (reg & SPI_TXLVL_MASK)) {
+            reval = SET;
+        }
+        break;
+    case SPI_FLAG_RXLVL_EMPTY:
+        if(0U == (reg & SPI_RXLVL_MASK)) {
+            reval = SET;
+        }
+        break;
+    case SPI_FLAG_RXLVL_QUARTER_FULL:
+    case SPI_FLAG_RXLVL_HALF_FULL:
+    case SPI_FLAG_RXLVL_FULL:
+        if(flag == (reg & SPI_RXLVL_MASK)) {
+            reval = SET;
+        }
+        break;
+    default:
+        if(0U != (reg & flag)) {
+            reval = SET;
+        }
+        break;
+    }
+
+    return reval;
+}
+}
+------------------------------------------------------------------------------------------------------------
+--------------------------------------------------spi----------------------------------------------
+Fix file:
+../GD32L23x_Firmware_Library/Examples/SPI/SPI_master_slave_fullduplex_dma/main.c
+fix reason:
+1. Code optimization for void spi_config(void) function
+V2.2.0:
+None
+
+V2.3.0:
+#if SPI_CRC_ENABLE
+    /* configure SPI CRC function */
+    spi_crc_length_set(SPI0, SPI_CRC_8BIT);
+    spi_crc_polynomial_set(SPI0, 7);
+    spi_crc_polynomial_set(SPI1, 7);
+    spi_crc_on(SPI0);
+    spi_crc_on(SPI1);
+#endif /* enable CRC function */
+------------------------------------------------------------------------------------------------------------
+---------------------------------------------- V2.4.0-------------------------------------------------------
+1. Move the serial port redirection function from example to the gd32l23x_eval.c file for all firmware library.
+2. Delete the prinf routine of the LPUSART module.
+3. Add the Embedded_Builder project in the Template file and adapt all examples.
+4. Optimize the implementation method of the function return value, fix Misra 14.7 for all firmware library.
+5. Fix the bug in the timer_init() function of the TIMER module.
+6. Delete spi_quad_io23_output_enable() and spi_quad_io23_output_disable() function of the SPI moudule.
+7. Fixed the issue of incorrect register addresses for CAN_F23DATA0 and CAN_F17DATA1 in gd32l23x_can.h file.
+8. Add software delay to prevent the impact of Vcore fluctuations in PMU example.
+9. Fixed the issue of incorrect selection of LPTIEMR clock source in the rcu_clock_freq_get() function for the L233 series in gd32l23x_rcu.c file.
+10. Before erasing/writing flash and optionbytes, add an operation to clear all flags to prevent the client from inserting other operations 
+     that cause the flag bit to be set and affect the next operation in Write_Protection example of FMC moudule.
+11. Modify the can_transmission_stop() function of the CAN module to determine whether the CAN controller has three email addresses 
+     sending simultaneously and whether the email address to be terminated is the last one.If such an operation is performed, the code will 
+     exit and notify the customer that the abort operation has failed.
+13. Optimize the implementation of the fwdgt_prescaler_value_config() function in the gd32l23x_fwdgt.c file, and simultaneously update the FWDGT_key example.
+14. Optimize SPI_master_slave_fullduplex_dma/SPI_master_slave_fullduplex_polling/SPI_master_slave_fullduplex_ti_mode example for adapted to the EB project.
+------------------------------------------------------------------------------------------------------------

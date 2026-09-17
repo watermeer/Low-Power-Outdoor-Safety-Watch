@@ -1,0 +1,16 @@
+buildtools.path=Tools/BuildTools/2.10-20180103-1919/bin
+eclipse.preferences.version=1
+ldfile.code.location=FLASH
+ldfile.flash.Origin=0x08000000
+ldfile.flash.length=256
+ldfile.ram.Origin=0x20000000
+ldfile.ram.length=32
+ldfile.src.path=D\:\\software\\Embedded_Builder\\GD32EmbeddedBuilder_v1.6.6.35926_Alpha\\GD32EmbeddedBuilder\\plugins\\com.gigadevice.templatefwlib.arm.gd32l23x_1.0.0.202512161643\\Firmware\\gd32l23x_flash.ld
+ldfile.stack.Origin=0x20001000
+ldfile.stack.length=1
+ldfile.target.path=D\:\\SVN\\fw32303\\GD32L23x_Firmware_Library\\Template\\GD32EBuilder_project\\ldscripts\\gd32l23x_flash.ld
+mcu.target=GD32L233RCT6
+mcu.target.svd=GD32L23x.svd
+toolchain.name=GNU Tools for ARM Embedded Processors
+toolchain.path.1287942917=Tools/ARMEmbeddedGCC/bin
+toolchain.prefix=arm-none-eabi-

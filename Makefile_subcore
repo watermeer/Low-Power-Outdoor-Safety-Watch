@@ -1,0 +1,148 @@
+# ============================================================================
+# 副核 GD32L233 — Makefile
+# ============================================================================
+# 编译器: arm-none-eabi-gcc (GNU Arm Embedded Toolchain 10.3+)
+# 用法:   make -f Makefile_subcore [all|clean|flash|size]
+# ============================================================================
+
+# ---- 工具链 ----
+CC      = arm-none-eabi-gcc
+OBJCOPY = arm-none-eabi-objcopy
+SIZE    = arm-none-eabi-size
+
+# ---- MCU ----
+MCU     = -mcpu=cortex-m23 -mthumb
+FPU     =
+FLOAT   = -mfloat-abi=soft
+
+# ---- 优化 ----
+OPT     = -Os -g3 -Wall -Wextra
+STD     = -std=c99
+DEFS    = -DGD32L233
+
+# ---- 链接器 ----
+LDSCRIPT = subcore/startup/gd32l23x_flash.ld
+
+# ---- Include 路径 (分层 -I) ----
+INCLUDES = \
+    -I shared \
+    -I subcore/hal \
+    -I subcore/bsp \
+    -I subcore/app \
+    -I subcore/startup \
+    -I subcore/driver/CMSIS \
+    -I subcore/driver/stdperiph/Include \
+    -I subcore/driver/mpu6050/driver \
+    -I subcore/driver/mpu6050/i2c_interface_mpu6050 \
+    -I subcore/driver/max30102/driver \
+    -I subcore/driver/max30102/i2c_interface_max30102 \
+    -I subcore/driver/sht30/driver \
+    -I subcore/driver/sht30/i2c_interface_sht30 \
+    -I subcore/driver/mlx90614/driver \
+    -I subcore/driver/mlx90614/i2c_interface_mlx90614 \
+    -I subcore/driver/borad_hardwares
+
+# ---- 源文件 ----
+SHARED_SRC  = \
+    shared/protocol.c \
+    shared/crt_stubs.c
+
+HAL_SRC     = \
+    subcore/hal/hal_gpio.c \
+    subcore/hal/hal_i2c0.c \
+    subcore/hal/hal_i2c1.c \
+    subcore/hal/hal_rtc.c \
+    subcore/hal/hal_power.c \
+    subcore/hal/hal_system.c
+
+BSP_SRC     = \
+    subcore/bsp/bsp_mpu6050.c \
+    subcore/bsp/bsp_mlx90614.c \
+    subcore/bsp/bsp_sht30.c \
+    subcore/bsp/bsp_max30102.c \
+    subcore/bsp/bsp_sensors.c
+
+APP_SRC     = \
+    subcore/app/sliding_window.c \
+    subcore/app/trend_algorithm.c \
+    subcore/app/sample_scheduler.c \
+    subcore/app/alarm_manager.c \
+    subcore/app/kalman_filter.c
+
+DRIVER_SRC  = \
+    subcore/driver/stdperiph/Source/gd32l23x_gpio.c \
+    subcore/driver/stdperiph/Source/gd32l23x_i2c.c \
+    subcore/driver/stdperiph/Source/gd32l23x_rtc.c \
+    subcore/driver/stdperiph/Source/gd32l23x_pmu.c \
+    subcore/driver/stdperiph/Source/gd32l23x_rcu.c \
+    subcore/driver/stdperiph/Source/gd32l23x_usart.c \
+    subcore/driver/stdperiph/Source/gd32l23x_misc.c \
+    subcore/driver/stdperiph/Source/gd32l23x_exti.c \
+    subcore/driver/mpu6050/driver/driver_mpu6050.c \
+    subcore/driver/mpu6050/i2c_interface_mpu6050/driver_mpu6050_interface.c \
+    subcore/driver/max30102/driver/driver_max30102.c \
+    subcore/driver/max30102/i2c_interface_max30102/driver_max30102_interface.c \
+    subcore/driver/sht30/driver/driver_sht30.c \
+    subcore/driver/sht30/i2c_interface_sht30/driver_sht30_interface.c \
+    subcore/driver/mlx90614/driver/driver_mlx90614.c \
+    subcore/driver/mlx90614/i2c_interface_mlx90614/driver_mlx90614_interface.c \
+    subcore/driver/borad_hardwares/drv_max30102.c \
+    subcore/driver/borad_hardwares/drv_mlx90614.c \
+    subcore/driver/borad_hardwares/drv_sht30.c
+
+CMSIS_SRC   = \
+    subcore/driver/CMSIS/system_gd32l23x.c
+
+STARTUP_SRC = \
+    subcore/startup/subcore_main.c \
+    subcore/startup/gd32l23x_it.c
+
+# GCC 语法的启动文件（.s，不是 Keil 的 PROC/ENDP 那套）
+ASM_SRC     = subcore/startup/startup_gd32l233.s
+
+# ---- 目标与构建目录 ----
+# ⚠️ .o 必须放进 build 目录，别散在源码树里！
+#    shared/ 被主核副核共用，但两边 -mcpu 不同（M23 vs M3），
+#    共用一个 .o 会报 "conflicting CPU architectures"。
+BUILD   = build_subcore
+OBJDIR  = $(BUILD)/obj
+TARGET  = $(BUILD)/firmware
+
+C_SRC   = $(SHARED_SRC) $(HAL_SRC) $(BSP_SRC) $(APP_SRC) $(DRIVER_SRC) $(CMSIS_SRC) $(STARTUP_SRC)
+OBJS    = $(addprefix $(OBJDIR)/,$(C_SRC:.c=.o)) $(addprefix $(OBJDIR)/,$(ASM_SRC:.s=.o))
+
+CFLAGS  = $(MCU) $(FPU) $(FLOAT) $(OPT) $(STD) $(DEFS) $(INCLUDES)
+LDFLAGS = $(MCU) $(FPU) $(FLOAT) -T$(LDSCRIPT) -Wl,-Map=$(BUILD)/firmware.map,--cref -nostartfiles
+
+all: $(TARGET).elf $(TARGET).bin $(TARGET).hex size
+
+# ⚠️ 链接脚本必须列为依赖：不然改了 .ld 再 make，make 认为 elf 还是新的，
+#    直接跳过链接 —— 踩过一次，改了段名却怎么都不生效
+$(TARGET).elf: $(OBJS) $(LDSCRIPT)
+	$(CC) $(LDFLAGS) -o $@ $(OBJS) -lc -lm -lnosys
+
+$(TARGET).bin: $(TARGET).elf
+	$(OBJCOPY) -O binary $< $@
+
+$(TARGET).hex: $(TARGET).elf
+	$(OBJCOPY) -O ihex $< $@
+
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(OBJDIR)/%.o: %.s
+	@mkdir -p $(dir $@)
+	$(CC) $(MCU) -c -o $@ $<
+
+size: $(TARGET).elf
+	$(SIZE) $<
+
+clean:
+	rm -rf $(BUILD)
+
+flash: $(TARGET).hex
+	openocd -f interface/stlink.cfg -f target/gd32l23x.cfg \
+	        -c "program $(TARGET).hex verify reset exit"
+
+.PHONY: all size clean flash

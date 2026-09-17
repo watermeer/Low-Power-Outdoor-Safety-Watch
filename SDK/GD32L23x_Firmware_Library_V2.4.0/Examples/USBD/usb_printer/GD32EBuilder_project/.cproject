@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.gigadevice.mbs.arm.configuration.debug.1220644957.1528066129">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.gigadevice.mbs.arm.configuration.debug.1220644957.1528066129" moduleId="org.eclipse.cdt.core.settings" name="GD32L233">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="${command_rm} -rf" description="" errorParsers="org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.CWDLocator;org.eclipse.cdt.core.GCCErrorParser" id="com.gigadevice.mbs.arm.configuration.debug.1220644957.1528066129" name="GD32L233" optionalBuildProperties="" parent="com.gigadevice.mbs.arm.configuration.debug" postbuildStep="arm-none-eabi-objcopy -O binary &quot;${ProjName}.elf&quot;  &quot;${ProjName}.bin&quot;; arm-none-eabi-objdump -D &quot;${ProjName}.elf&quot; &gt;  &quot;${ProjName}.dump&quot;" prebuildStep="">
+					<folderInfo id="com.gigadevice.mbs.arm.configuration.debug.1220644957.1528066129." name="/" resourcePath="">
+						<toolChain id="com.gigadevice.mbs.arm.toolChain.elf.debug.1054909666" name="GD ARM MCU Toolchain" secondaryOutputs="com.gigadevice.mbs.arm.outputType.objcopy.bin;com.gigadevice.mbs.arm.outputType.size;com.gigadevice.mbs.arm.outputType.objcopy.hex" superClass="com.gigadevice.mbs.arm.toolChain.elf.debug">
+							<option id="com.gigadevice.mbs.arm.option.targetProcessor.ARMFamily.1022549679" name="ARM Family" superClass="com.gigadevice.mbs.arm.option.targetProcessor.ARMFamily" useByScannerDiscovery="true" value="com.gigadevice.mbs.arm.option.targetProcessor.ARMFamily.cortex-m23" valueType="enumerated"/>
+							<option id="com.gigadevice.mbs.arm.option.targetProcessor.fpu.abi.1715404279" name="Float ABI" superClass="com.gigadevice.mbs.arm.option.targetProcessor.fpu.abi" value="com.gigadevice.mbs.arm.option.targetProcessor.fpu.abi.softfp" valueType="enumerated"/>
+							<option id="com.gigadevice.mbs.arm.option.targetProcessor.instructionset.767893528" name="Instruction set" superClass="com.gigadevice.mbs.arm.option.targetProcessor.instructionset" value="com.gigadevice.mbs.arm.option.targetProcessor.instructionset.thumb" valueType="enumerated"/>
+							<option id="com.gigadevice.mbs.arm.option.targetProcessor.fpu.unit.1321265410" name="FPU Type" superClass="com.gigadevice.mbs.arm.option.targetProcessor.fpu.unit" value="com.gigadevice.mbs.arm.option.targetProcessor.fpu.unit.fpv5spd16" valueType="enumerated"/>
+							<option id="com.gigadevice.mbs.arm.option.targetProcessor.allOptions.80375660" name="All options" superClass="com.gigadevice.mbs.arm.option.targetProcessor.allOptions" useByScannerDiscovery="false" value="-mcpu=cortex-m23 -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.targetProcessor.other.112867948" name="Other target flags" superClass="com.gigadevice.mbs.arm.option.targetProcessor.other" useByScannerDiscovery="true" value="" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.messageLength.1518508252" name="Message length (-fmessage-length=0)" superClass="com.gigadevice.mbs.arm.option.optimization.messageLength" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.signedChar.1768862600" name="Plain char is signed (-fsigned-char)" superClass="com.gigadevice.mbs.arm.option.optimization.signedChar" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.functionSections.691137120" name="Function sections (-ffunction-sections)" superClass="com.gigadevice.mbs.arm.option.optimization.functionSections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.dataSections.1524956853" name="Data sections (-fdata-sections)" superClass="com.gigadevice.mbs.arm.option.optimization.dataSections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.noCommon.1801316055" name="No common unitialized (-fno-common)" superClass="com.gigadevice.mbs.arm.option.optimization.noCommon" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.PIC.1916773238" name="Position independent code (-fPIC)" superClass="com.gigadevice.mbs.arm.option.optimization.PIC" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.lto.1092275294" name="Standard link-time optimizer (-flto)" superClass="com.gigadevice.mbs.arm.option.optimization.lto" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.other.342353874" name="Other optimization flags" superClass="com.gigadevice.mbs.arm.option.optimization.other" useByScannerDiscovery="true" value="" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.allOptions.1541792731" name="All options" superClass="com.gigadevice.mbs.arm.option.optimization.allOptions" useByScannerDiscovery="false" value="-Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.syntaxOnly.896114676" name="Check syntax only (-fsyntax-only)" superClass="com.gigadevice.mbs.arm.option.warnings.syntaxOnly" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.allOptions.328097329" name="All options" superClass="com.gigadevice.mbs.arm.option.warnings.allOptions" useByScannerDiscovery="false" value="" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.pedantic.911809010" name="Strict ISO C (-pedantic)" superClass="com.gigadevice.mbs.arm.option.warnings.pedantic" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.pedanticErrors.1333960528" name="Pedantic warnings as errors (-pedantic-errors)" superClass="com.gigadevice.mbs.arm.option.warnings.pedanticErrors" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.allWarn.1166758441" name="Enable all common warnings (-Wall)" superClass="com.gigadevice.mbs.arm.option.warnings.allWarn" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.extraWarn.2000411679" name="Enable some extra warnings (-Wextra)" superClass="com.gigadevice.mbs.arm.option.warnings.extraWarn" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.conversion.460450120" name="Warn for implicit conversions (-Wconversion)" superClass="com.gigadevice.mbs.arm.option.warnings.conversion" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.uninitialized.1699812787" name="Warn on uninitialized variables (-Wuninitialised)" superClass="com.gigadevice.mbs.arm.option.warnings.uninitialized" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.unused.770460470" name="Warn on various unused elements (-Wunused)" superClass="com.gigadevice.mbs.arm.option.warnings.unused" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.toErrors.182738019" name="Generate errors instead of warnings (-Werror)" superClass="com.gigadevice.mbs.arm.option.warnings.toErrors" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.noWarn.392735149" name="Inhibit all warnings (-w)" superClass="com.gigadevice.mbs.arm.option.warnings.noWarn" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.other.586802770" name="Other warning flags" superClass="com.gigadevice.mbs.arm.option.warnings.other" useByScannerDiscovery="true" value="" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.debugging.level.1407434496" name="Debug level" superClass="com.gigadevice.mbs.arm.option.debugging.level" useByScannerDiscovery="true" value="com.gigadevice.mbs.option.toolSettings.debugging.level.max" valueType="enumerated"/>
+							<option id="com.gigadevice.mbs.arm.option.debugging.allOptions.1620745039" name="All options" superClass="com.gigadevice.mbs.arm.option.debugging.allOptions" useByScannerDiscovery="false" value=" -g3" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.debugging.prof.364526493" name="Generate prof information (-p)" superClass="com.gigadevice.mbs.arm.option.debugging.prof" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.debugging.gProf.639834005" name="Generate gprof information (-pg)" superClass="com.gigadevice.mbs.arm.option.debugging.gProf" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.debugging.other.1288980011" name="Other debugging flags" superClass="com.gigadevice.mbs.arm.option.debugging.other" useByScannerDiscovery="true" value="" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.outputFile.list.1301294407" name="List" superClass="com.gigadevice.mbs.arm.option.outputFile.list" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.outputFile.dump.2086772664" name="Dump" superClass="com.gigadevice.mbs.arm.option.outputFile.dump" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.outputFile.map.156131161.765522605" name="Map" superClass="com.gigadevice.mbs.arm.option.outputFile.map" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.targetMcu.partNo.1870626470" superClass="com.gigadevice.mbs.arm.option.targetMcu.partNo" useByScannerDiscovery="false" value="GD32L233RCT6" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.name.446265160" name="%option.base.toolChain.name" superClass="com.gigadevice.mbs.arm.option.toolChain.name" useByScannerDiscovery="false" value="GNU Tools for ARM Embedded Processors" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.path.45632646" name="%option.base.toolChain.path" superClass="com.gigadevice.mbs.arm.option.toolChain.path" useByScannerDiscovery="false" value="Tools/ARMEmbeddedGCC/bin" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.buildToolPath.214985451" name="%option.base.toolChain.buildToolPath" superClass="com.gigadevice.mbs.arm.option.toolChain.buildToolPath" useByScannerDiscovery="false" value="Tools/BuildTools/2.10-20180103-1919/bin" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.prefix.1476710267" name="%option.base.toolChain.prefix" superClass="com.gigadevice.mbs.arm.option.toolChain.prefix" value="arm-none-eabi-" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.c.1774519177" name="C Compiler" superClass="com.gigadevice.mbs.arm.option.toolChain.c" value="arm-none-eabi-gcc" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.objcopy.1028921557" name="%option.base.toolChain.objcopy" superClass="com.gigadevice.mbs.arm.option.toolChain.objcopy" value="arm-none-eabi-objcopy" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.objdump.194482504" name="%option.base.toolChain.listing" superClass="com.gigadevice.mbs.arm.option.toolChain.objdump" value="arm-none-eabi-objdump" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.size.609706608" name="%option.base.toolChain.size" superClass="com.gigadevice.mbs.arm.option.toolChain.size" value="arm-none-eabi-size" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.level.1308513830" name="Optimization Level" superClass="com.gigadevice.mbs.arm.option.optimization.level" value="com.gigadevice.mbs.option.toolSettings.optimization.level.size" valueType="enumerated"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.gigadevice.mbs.arm.targetPlatform.660780019" isAbstract="false" osList="all" superClass="com.gigadevice.mbs.arm.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/arm}/GD ARM MCU Release" id="com.gigadevice.mbs.arm.builder.1983996699" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="com.gigadevice.mbs.arm.builder"/>
+							<tool id="com.gigadevice.mbs.arm.tool.CCompiler.1150803200" name="GD ARM MCU C Compiler" superClass="com.gigadevice.mbs.arm.tool.CCompiler">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.gigadevice.mbs.arm.option.CCompiler.includes.paths.723662436" name="Include paths (-I)" superClass="com.gigadevice.mbs.arm.option.CCompiler.includes.paths" useByScannerDiscovery="true" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Firmware/CMSIS/GD/GD32L23x/Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Firmware/CMSIS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Firmware/GD32L23x_standard_peripheral/Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Firmware/GD32L23x_usbd_library/usbd/Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Firmware/GD32L23x_usbd_library/device/Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Firmware/GD32L23x_usbd_library/class/device/printer/Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Utilities&quot;"/>
+								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.gigadevice.mbs.arm.option.CCompiler.symbols.defs.1792211162" name="Define (-D)" superClass="com.gigadevice.mbs.arm.option.CCompiler.symbols.defs" useByScannerDiscovery="true" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="USE_STDPERIPH_DRIVER"/>
+									<listOptionValue builtIn="false" value="GD32L233"/>
+								</option>
+								<option id="com.gigadevice.mbs.arm.option.CCompiler.general.std.125590716" name="C Standard" superClass="com.gigadevice.mbs.arm.option.CCompiler.general.std" useByScannerDiscovery="false" value="com.gigadevice.mbs.option.toolSettings.CCompiler.std.gnu11" valueType="enumerated"/>
+								<inputType id="com.gigadevice.mbs.arm.inputType.CCompiler.1791442043" superClass="com.gigadevice.mbs.arm.inputType.CCompiler"/>
+							</tool>
+							<tool id="com.gigadevice.mbs.arm.tool.linker.234447800" name="GD ARM MCU Linker" superClass="com.gigadevice.mbs.arm.tool.linker">
+								<option id="com.gigadevice.mbs.arm.option.linker.general.gcsections.360565441" name="Remove unused sections (-Xlinker --gc-sections)" superClass="com.gigadevice.mbs.arm.option.linker.general.gcsections" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.gigadevice.mbs.arm.option.linker.general.scriptFile.386772379" name="Linker script (-T)" superClass="com.gigadevice.mbs.arm.option.linker.general.scriptFile" useByScannerDiscovery="false" valueType="stringList">
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Firmware/CMSIS/GD/GD32L23x/Source/GCC/Ld/gd32l233xC_flash.ld&quot;"/>
+								</option>
+								<option id="com.gigadevice.mbs.arm.option.linker.libraries.libs.838886143" name="Libraries (-l)" superClass="com.gigadevice.mbs.arm.option.linker.libraries.libs" useByScannerDiscovery="false"/>
+								<option id="com.gigadevice.mbs.arm.option.linker.libraries.paths.2027201048" name="Library search path (-L)" superClass="com.gigadevice.mbs.arm.option.linker.libraries.paths" useByScannerDiscovery="false"/>
+								<option id="com.gigadevice.mbs.arm.option.linker.misc.other.1970018188" name="Other linker flags" superClass="com.gigadevice.mbs.arm.option.linker.misc.other" useByScannerDiscovery="false" value="" valueType="string"/>
+								<inputType id="com.gigadevice.mbs.arm.inputType.linker.73059639" superClass="com.gigadevice.mbs.arm.inputType.linker">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.gigadevice.mbs.arm.tool.assembler.919489299" name="GD ARM MCU Assembler" superClass="com.gigadevice.mbs.arm.tool.assembler">
+								<option id="com.gigadevice.mbs.arm.option.assembler.preprocessor.usepreprocessor.1834327672" name="Use preprocessor" superClass="com.gigadevice.mbs.arm.option.assembler.preprocessor.usepreprocessor" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.gigadevice.mbs.arm.option.assembler.includes.paths.260172214" name="Include paths (-I)" superClass="com.gigadevice.mbs.arm.option.assembler.includes.paths" useByScannerDiscovery="true"/>
+								<option id="com.gigadevice.mbs.arm.option.assembler.symbols.defs.1348659033" name="Define (-D)" superClass="com.gigadevice.mbs.arm.option.assembler.symbols.defs" useByScannerDiscovery="true"/>
+								<inputType id="com.gigadevice.mbs.arm.inputType.assembler.1032587863" superClass="com.gigadevice.mbs.arm.inputType.assembler"/>
+							</tool>
+							<tool id="com.gigadevice.mbs.arm.tool.objcopy.hex.382504549" name="GD ARM MCU Flash Image(Hex)" superClass="com.gigadevice.mbs.arm.tool.objcopy.hex"/>
+							<tool id="com.gigadevice.mbs.arm.tool.objcopy.bin.2083153611" name="GD ARM MCU Flash Image(Bin)" superClass="com.gigadevice.mbs.arm.tool.objcopy.bin"/>
+							<tool id="com.gigadevice.mbs.arm.tool.objdump.list.457823994" name="GD ARM MCU Listing" superClass="com.gigadevice.mbs.arm.tool.objdump.list"/>
+							<tool id="com.gigadevice.mbs.arm.tool.size.1936691508" name="GD ARM MCU Print Size" superClass="com.gigadevice.mbs.arm.tool.size"/>
+							<tool id="com.gigadevice.mbs.arm.tool.objdump.dump.2130855739" name="GD ARM MCU Dump" superClass="com.gigadevice.mbs.arm.tool.objdump.dump"/>
+							<tool id="com.gigadevice.mbs.arm.tool.CppCompiler.858632548" name="GD ARM MCU C++ Compiler" superClass="com.gigadevice.mbs.arm.tool.CppCompiler"/>
+							<tool id="com.gigadevice.mbs.arm.tool.cpp.linker.1698619994" name="GD ARM MCU C++ Linker" superClass="com.gigadevice.mbs.arm.tool.cpp.linker">
+								<option id="com.gigadevice.mbs.arm.option.cpp.linker.general.gcsections.198256745" name="Remove unused sections (-Xlinker --gc-sections)" superClass="com.gigadevice.mbs.arm.option.cpp.linker.general.gcsections"/>
+							</tool>
+							<tool id="com.gigadevice.mbs.tool.archiver.1024009387" name="GD ARM MCU Archiver" superClass="com.gigadevice.mbs.tool.archiver"/>
+							<tool id="com.gigadevice.mbs.arm.tool.objcopy.mot.2050294145" name="GD ARM MCU Flash Image(Mot)" superClass="com.gigadevice.mbs.arm.tool.objcopy.mot"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="Startup/startup_gd32l235.S" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.gigadevice.mbs.arm.configuration.debug.1220644957.1528066129.818719074">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.gigadevice.mbs.arm.configuration.debug.1220644957.1528066129.818719074" moduleId="org.eclipse.cdt.core.settings" name="GD32L235">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="${command_rm} -rf" description="" id="com.gigadevice.mbs.arm.configuration.debug.1220644957.1528066129.818719074" name="GD32L235" optionalBuildProperties="" parent="com.gigadevice.mbs.arm.configuration.debug" postbuildStep="arm-none-eabi-objcopy -O binary &quot;${ProjName}.elf&quot;  &quot;${ProjName}.bin&quot;; arm-none-eabi-objdump -D &quot;${ProjName}.elf&quot; &gt;  &quot;${ProjName}.dump&quot;" prebuildStep="">
+					<folderInfo id="com.gigadevice.mbs.arm.configuration.debug.1220644957.1528066129.818719074." name="/" resourcePath="">
+						<toolChain id="com.gigadevice.mbs.arm.toolChain.elf.debug.1212366954" name="GD ARM MCU Toolchain" secondaryOutputs="com.gigadevice.mbs.arm.outputType.objcopy.bin;com.gigadevice.mbs.arm.outputType.size;com.gigadevice.mbs.arm.outputType.objcopy.hex" superClass="com.gigadevice.mbs.arm.toolChain.elf.debug">
+							<option id="com.gigadevice.mbs.arm.option.targetProcessor.ARMFamily.1645575193" name="ARM Family" superClass="com.gigadevice.mbs.arm.option.targetProcessor.ARMFamily" useByScannerDiscovery="true" value="cortex-m23" valueType="enumerated"/>
+							<option id="com.gigadevice.mbs.arm.option.targetProcessor.fpu.abi.1873126151" name="Float ABI" superClass="com.gigadevice.mbs.arm.option.targetProcessor.fpu.abi" value="com.gigadevice.mbs.arm.option.targetProcessor.fpu.abi.softfp" valueType="enumerated"/>
+							<option id="com.gigadevice.mbs.arm.option.targetProcessor.instructionset.1907768750" name="Instruction set" superClass="com.gigadevice.mbs.arm.option.targetProcessor.instructionset" value="com.gigadevice.mbs.arm.option.targetProcessor.instructionset.thumb" valueType="enumerated"/>
+							<option id="com.gigadevice.mbs.arm.option.targetProcessor.fpu.unit.1559999139" name="FPU Type" superClass="com.gigadevice.mbs.arm.option.targetProcessor.fpu.unit" value="com.gigadevice.mbs.arm.option.targetProcessor.fpu.unit.fpv5spd16" valueType="enumerated"/>
+							<option id="com.gigadevice.mbs.arm.option.targetProcessor.allOptions.357516903" name="All options" superClass="com.gigadevice.mbs.arm.option.targetProcessor.allOptions" useByScannerDiscovery="false" value="-mcpu=cortex-m23 -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.targetProcessor.other.196359448" name="Other target flags" superClass="com.gigadevice.mbs.arm.option.targetProcessor.other" useByScannerDiscovery="true" value="" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.messageLength.412349342" name="Message length (-fmessage-length=0)" superClass="com.gigadevice.mbs.arm.option.optimization.messageLength" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.signedChar.901883768" name="Plain char is signed (-fsigned-char)" superClass="com.gigadevice.mbs.arm.option.optimization.signedChar" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.functionSections.1879878597" name="Function sections (-ffunction-sections)" superClass="com.gigadevice.mbs.arm.option.optimization.functionSections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.dataSections.2094892361" name="Data sections (-fdata-sections)" superClass="com.gigadevice.mbs.arm.option.optimization.dataSections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.noCommon.545412118" name="No common unitialized (-fno-common)" superClass="com.gigadevice.mbs.arm.option.optimization.noCommon" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.PIC.311051769" name="Position independent code (-fPIC)" superClass="com.gigadevice.mbs.arm.option.optimization.PIC" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.lto.1312349794" name="Standard link-time optimizer (-flto)" superClass="com.gigadevice.mbs.arm.option.optimization.lto" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.other.1994208135" name="Other optimization flags" superClass="com.gigadevice.mbs.arm.option.optimization.other" useByScannerDiscovery="true" value="" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.allOptions.1966723026" name="All options" superClass="com.gigadevice.mbs.arm.option.optimization.allOptions" useByScannerDiscovery="false" value="-Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.syntaxOnly.447143103" name="Check syntax only (-fsyntax-only)" superClass="com.gigadevice.mbs.arm.option.warnings.syntaxOnly" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.allOptions.1886723018" name="All options" superClass="com.gigadevice.mbs.arm.option.warnings.allOptions" useByScannerDiscovery="false" value="" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.pedantic.92964764" name="Strict ISO C (-pedantic)" superClass="com.gigadevice.mbs.arm.option.warnings.pedantic" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.pedanticErrors.1527537495" name="Pedantic warnings as errors (-pedantic-errors)" superClass="com.gigadevice.mbs.arm.option.warnings.pedanticErrors" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.allWarn.726226864" name="Enable all common warnings (-Wall)" superClass="com.gigadevice.mbs.arm.option.warnings.allWarn" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.extraWarn.1652030843" name="Enable some extra warnings (-Wextra)" superClass="com.gigadevice.mbs.arm.option.warnings.extraWarn" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.conversion.1411572759" name="Warn for implicit conversions (-Wconversion)" superClass="com.gigadevice.mbs.arm.option.warnings.conversion" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.uninitialized.2059084515" name="Warn on uninitialized variables (-Wuninitialised)" superClass="com.gigadevice.mbs.arm.option.warnings.uninitialized" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.unused.1803819976" name="Warn on various unused elements (-Wunused)" superClass="com.gigadevice.mbs.arm.option.warnings.unused" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.toErrors.877085000" name="Generate errors instead of warnings (-Werror)" superClass="com.gigadevice.mbs.arm.option.warnings.toErrors" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.noWarn.1009816332" name="Inhibit all warnings (-w)" superClass="com.gigadevice.mbs.arm.option.warnings.noWarn" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.warnings.other.82297137" name="Other warning flags" superClass="com.gigadevice.mbs.arm.option.warnings.other" useByScannerDiscovery="true" value="" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.debugging.level.383487924" name="Debug level" superClass="com.gigadevice.mbs.arm.option.debugging.level" useByScannerDiscovery="true" value="com.gigadevice.mbs.option.toolSettings.debugging.level.max" valueType="enumerated"/>
+							<option id="com.gigadevice.mbs.arm.option.debugging.allOptions.433550436" name="All options" superClass="com.gigadevice.mbs.arm.option.debugging.allOptions" useByScannerDiscovery="false" value=" -g3" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.debugging.prof.47701361" name="Generate prof information (-p)" superClass="com.gigadevice.mbs.arm.option.debugging.prof" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.debugging.gProf.1001728993" name="Generate gprof information (-pg)" superClass="com.gigadevice.mbs.arm.option.debugging.gProf" useByScannerDiscovery="true" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.debugging.other.941393087" name="Other debugging flags" superClass="com.gigadevice.mbs.arm.option.debugging.other" useByScannerDiscovery="true" value="" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.outputFile.list.139013489" name="List" superClass="com.gigadevice.mbs.arm.option.outputFile.list" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.outputFile.dump.1551731950" name="Dump" superClass="com.gigadevice.mbs.arm.option.outputFile.dump" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.outputFile.map.156131161.765522605.919293773" name="Map" superClass="com.gigadevice.mbs.arm.option.outputFile.map" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+							<option id="com.gigadevice.mbs.arm.option.targetMcu.partNo.430138475" superClass="com.gigadevice.mbs.arm.option.targetMcu.partNo" useByScannerDiscovery="false" value="GD32L235RBT6" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.name.451827646" name="%option.base.toolChain.name" superClass="com.gigadevice.mbs.arm.option.toolChain.name" useByScannerDiscovery="false" value="GNU Tools for ARM Embedded Processors" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.path.1867131057" name="%option.base.toolChain.path" superClass="com.gigadevice.mbs.arm.option.toolChain.path" useByScannerDiscovery="false" value="Tools/ARMEmbeddedGCC/bin" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.buildToolPath.2007678356" name="%option.base.toolChain.buildToolPath" superClass="com.gigadevice.mbs.arm.option.toolChain.buildToolPath" useByScannerDiscovery="false" value="Tools/BuildTools/2.10-20180103-1919/bin" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.prefix.239948420" name="%option.base.toolChain.prefix" superClass="com.gigadevice.mbs.arm.option.toolChain.prefix" value="arm-none-eabi-" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.c.2113495634" name="C Compiler" superClass="com.gigadevice.mbs.arm.option.toolChain.c" value="arm-none-eabi-gcc" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.objcopy.173007790" name="%option.base.toolChain.objcopy" superClass="com.gigadevice.mbs.arm.option.toolChain.objcopy" value="arm-none-eabi-objcopy" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.objdump.318144628" name="%option.base.toolChain.listing" superClass="com.gigadevice.mbs.arm.option.toolChain.objdump" value="arm-none-eabi-objdump" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.toolChain.size.1943233209" name="%option.base.toolChain.size" superClass="com.gigadevice.mbs.arm.option.toolChain.size" value="arm-none-eabi-size" valueType="string"/>
+							<option id="com.gigadevice.mbs.arm.option.optimization.level.603293950" name="Optimization Level" superClass="com.gigadevice.mbs.arm.option.optimization.level" value="com.gigadevice.mbs.option.toolSettings.optimization.level.size" valueType="enumerated"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.gigadevice.mbs.arm.targetPlatform.210272009" isAbstract="false" osList="all" superClass="com.gigadevice.mbs.arm.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/arm}/GD ARM MCU Release" id="com.gigadevice.mbs.arm.builder.1665674820" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="com.gigadevice.mbs.arm.builder"/>
+							<tool id="com.gigadevice.mbs.arm.tool.CCompiler.1377128688" name="GD ARM MCU C Compiler" superClass="com.gigadevice.mbs.arm.tool.CCompiler">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.gigadevice.mbs.arm.option.CCompiler.includes.paths.572467322" name="Include paths (-I)" superClass="com.gigadevice.mbs.arm.option.CCompiler.includes.paths" useByScannerDiscovery="true" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Firmware/CMSIS/GD/GD32L23x/Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Firmware/CMSIS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Firmware/GD32L23x_standard_peripheral/Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Firmware/GD32L23x_usbd_library/usbd/Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Firmware/GD32L23x_usbd_library/device/Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Firmware/GD32L23x_usbd_library/class/device/printer/Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Utilities&quot;"/>
+								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.gigadevice.mbs.arm.option.CCompiler.symbols.defs.154117510" name="Define (-D)" superClass="com.gigadevice.mbs.arm.option.CCompiler.symbols.defs" useByScannerDiscovery="true" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="USE_STDPERIPH_DRIVER"/>
+									<listOptionValue builtIn="false" value="GD32L235"/>
+								</option>
+								<option id="com.gigadevice.mbs.arm.option.CCompiler.general.std.694225908" name="C Standard" superClass="com.gigadevice.mbs.arm.option.CCompiler.general.std" useByScannerDiscovery="false" value="com.gigadevice.mbs.option.toolSettings.CCompiler.std.gnu11" valueType="enumerated"/>
+								<inputType id="com.gigadevice.mbs.arm.inputType.CCompiler.1062965118" superClass="com.gigadevice.mbs.arm.inputType.CCompiler"/>
+							</tool>
+							<tool id="com.gigadevice.mbs.arm.tool.linker.812734473" name="GD ARM MCU Linker" superClass="com.gigadevice.mbs.arm.tool.linker">
+								<option id="com.gigadevice.mbs.arm.option.linker.general.gcsections.1797403156" name="Remove unused sections (-Xlinker --gc-sections)" superClass="com.gigadevice.mbs.arm.option.linker.general.gcsections" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.gigadevice.mbs.arm.option.linker.general.scriptFile.1829173321" name="Linker script (-T)" superClass="com.gigadevice.mbs.arm.option.linker.general.scriptFile" useByScannerDiscovery="false" valueType="stringList">
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../../../../Firmware/CMSIS/GD/GD32L23x/Source/GCC/Ld/gd32l235xB_flash.ld&quot;"/>
+								</option>
+								<option id="com.gigadevice.mbs.arm.option.linker.libraries.libs.620703561" name="Libraries (-l)" superClass="com.gigadevice.mbs.arm.option.linker.libraries.libs" useByScannerDiscovery="false"/>
+								<option id="com.gigadevice.mbs.arm.option.linker.libraries.paths.1881170100" name="Library search path (-L)" superClass="com.gigadevice.mbs.arm.option.linker.libraries.paths" useByScannerDiscovery="false"/>
+								<option id="com.gigadevice.mbs.arm.option.linker.misc.other.987248017" name="Other linker flags" superClass="com.gigadevice.mbs.arm.option.linker.misc.other" useByScannerDiscovery="false" value="" valueType="string"/>
+								<inputType id="com.gigadevice.mbs.arm.inputType.linker.1560014460" superClass="com.gigadevice.mbs.arm.inputType.linker">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.gigadevice.mbs.arm.tool.assembler.1792252958" name="GD ARM MCU Assembler" superClass="com.gigadevice.mbs.arm.tool.assembler">
+								<option id="com.gigadevice.mbs.arm.option.assembler.preprocessor.usepreprocessor.2087435673" name="Use preprocessor" superClass="com.gigadevice.mbs.arm.option.assembler.preprocessor.usepreprocessor" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.gigadevice.mbs.arm.option.assembler.includes.paths.539638281" name="Include paths (-I)" superClass="com.gigadevice.mbs.arm.option.assembler.includes.paths" useByScannerDiscovery="true"/>
+								<option id="com.gigadevice.mbs.arm.option.assembler.symbols.defs.690508104" name="Define (-D)" superClass="com.gigadevice.mbs.arm.option.assembler.symbols.defs" useByScannerDiscovery="true"/>
+								<inputType id="com.gigadevice.mbs.arm.inputType.assembler.549202673" superClass="com.gigadevice.mbs.arm.inputType.assembler"/>
+							</tool>
+							<tool id="com.gigadevice.mbs.arm.tool.objcopy.hex.231392878" name="GD ARM MCU Flash Image(Hex)" superClass="com.gigadevice.mbs.arm.tool.objcopy.hex"/>
+							<tool id="com.gigadevice.mbs.arm.tool.objcopy.bin.1148691014" name="GD ARM MCU Flash Image(Bin)" superClass="com.gigadevice.mbs.arm.tool.objcopy.bin"/>
+							<tool id="com.gigadevice.mbs.arm.tool.objdump.list.1126962287" name="GD ARM MCU Listing" superClass="com.gigadevice.mbs.arm.tool.objdump.list"/>
+							<tool id="com.gigadevice.mbs.arm.tool.size.1702506856" name="GD ARM MCU Print Size" superClass="com.gigadevice.mbs.arm.tool.size"/>
+							<tool id="com.gigadevice.mbs.arm.tool.objdump.dump.983554278" name="GD ARM MCU Dump" superClass="com.gigadevice.mbs.arm.tool.objdump.dump"/>
+							<tool id="com.gigadevice.mbs.arm.tool.CppCompiler.263819633" name="GD ARM MCU C++ Compiler" superClass="com.gigadevice.mbs.arm.tool.CppCompiler"/>
+							<tool id="com.gigadevice.mbs.arm.tool.cpp.linker.345591952" name="GD ARM MCU C++ Linker" superClass="com.gigadevice.mbs.arm.tool.cpp.linker"/>
+							<tool id="com.gigadevice.mbs.tool.archiver.1289438169" name="GD ARM MCU Archiver" superClass="com.gigadevice.mbs.tool.archiver"/>
+							<tool id="com.gigadevice.mbs.arm.tool.objcopy.mot.674611943" name="GD ARM MCU Flash Image(Mot)" superClass="com.gigadevice.mbs.arm.tool.objcopy.mot"/>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="com.gigadevice.mbs.arm.configuration.debug.1220644957.1528066129.818719074.1620263831" name="usbd_lld_int.c" rcbsApplicability="disable" resourcePath="USBD_Drivers/usbd_lld_int.c" toolsToInvoke="com.gigadevice.mbs.arm.tool.CCompiler.1377128688.1674734322">
+						<tool id="com.gigadevice.mbs.arm.tool.CCompiler.1377128688.1674734322" name="GD ARM MCU C Compiler" superClass="com.gigadevice.mbs.arm.tool.CCompiler.1377128688">
+							<option id="com.gigadevice.mbs.arm.option.CCompiler.general.otherflags.1903595184" name="Other flags" superClass="com.gigadevice.mbs.arm.option.CCompiler.general.otherflags" value="-Os" valueType="string"/>
+							<inputType id="com.gigadevice.mbs.arm.inputType.CCompiler.1374142904" superClass="com.gigadevice.mbs.arm.inputType.CCompiler"/>
+						</tool>
+					</fileInfo>
+					<sourceEntries>
+						<entry excluding="Startup/startup_gd32l233.S" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="arm.com.gigadevice.mbs.arm.projectType.398851028" name="Executable" projectType="com.gigadevice.mbs.arm.projectType"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="GD32L23x_CL">
+			<resource resourceType="PROJECT" workspacePath="/GD32L23x_CL"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="com.gigadevice.mbs.arm.configuration.debug.1220644957;com.gigadevice.mbs.arm.configuration.debug.1220644957.;com.gigadevice.mbs.arm.tool.CCompiler.2072741458;com.gigadevice.mbs.arm.inputType.CCompiler.674605215">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.gigadevice.mbs.arm.configuration.debug.1220644957;com.gigadevice.mbs.arm.configuration.debug.1220644957.;com.gigadevice.mbs.arm.tool.CCompiler.1558996551;com.gigadevice.mbs.arm.inputType.CCompiler.523923489">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.gigadevice.mbs.arm.configuration.release.717282951;com.gigadevice.mbs.arm.configuration.release.717282951.;com.gigadevice.mbs.arm.tool.CCompiler.2072741458;com.gigadevice.mbs.arm.inputType.CCompiler.674605215">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+</cproject>

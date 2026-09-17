@@ -1,0 +1,98 @@
+# ============================================================================
+# 主核 STM32F103 — Makefile (Medium Density)
+# ============================================================================
+# 编译器: arm-none-eabi-gcc (GNU Arm Embedded Toolchain 10.3+)
+# 用法:   make -f Makefile_maincore [all|clean|flash|size]
+# ============================================================================
+
+# ---- 工具链 ----
+CC      = arm-none-eabi-gcc
+OBJCOPY = arm-none-eabi-objcopy
+SIZE    = arm-none-eabi-size
+
+# ---- MCU ----
+MCU     = -mcpu=cortex-m3 -mthumb
+FPU     =
+FLOAT   = -mfloat-abi=soft
+
+# ---- 优化 ----
+OPT     = -Os -g3 -Wall -Wextra
+STD     = -std=c99
+DEFS    = -DSTM32F10X_MD -DSTM32F103
+
+# ---- 链接器 ----
+LDSCRIPT = maincore/startup/stm32f103_flash.ld
+
+# ---- Include 路径 ----
+INCLUDES = \
+    -I shared \
+    -I maincore/hal \
+    -I maincore/app \
+    -I maincore/startup \
+    -I maincore/startup/CMSIS
+
+# ---- 源文件 ----
+SHARED_SRC        = \
+    shared/protocol.c \
+    shared/crt_stubs.c
+
+MAINCORE_HAL_SRC  = \
+    maincore/hal/maincore_system.c \
+    maincore/hal/maincore_i2c.c \
+    maincore/hal/maincore_oled.c \
+    maincore/hal/maincore_vibrate.c
+
+MAINCORE_APP_SRC  = maincore/app/maincore_alarm.c
+
+MAINCORE_START_SRC = \
+    maincore/startup/maincore_main.c \
+    maincore/startup/stm32f10x_it.c \
+    maincore/startup/system_stm32f10x.c
+
+# GCC 语法的启动文件（原来那份 startup_stm32f10x_md.s 是 Keil 语法，GNU as 汇编不了）
+ASM_SRC           = maincore/startup/startup_stm32f103_md.s
+
+# ---- 目标与构建目录 ----
+# ⚠️ 同 Makefile_subcore：.o 必须隔离到各自 build 目录，不能散在源码树
+BUILD   = build_maincore
+OBJDIR  = $(BUILD)/obj
+TARGET  = $(BUILD)/firmware
+
+C_SRC   = $(SHARED_SRC) $(MAINCORE_HAL_SRC) $(MAINCORE_APP_SRC) $(MAINCORE_START_SRC)
+OBJS    = $(addprefix $(OBJDIR)/,$(C_SRC:.c=.o)) $(addprefix $(OBJDIR)/,$(ASM_SRC:.s=.o))
+
+CFLAGS  = $(MCU) $(FPU) $(FLOAT) $(OPT) $(STD) $(DEFS) $(INCLUDES)
+LDFLAGS = $(MCU) $(FPU) $(FLOAT) -T$(LDSCRIPT) -Wl,-Map=$(BUILD)/firmware.map,--cref -nostartfiles
+
+all: $(TARGET).elf $(TARGET).bin $(TARGET).hex size
+
+# ⚠️ 链接脚本必须列为依赖：不然改了 .ld 再 make，make 认为 elf 还是新的，
+#    直接跳过链接 —— 踩过一次，改了段名却怎么都不生效
+$(TARGET).elf: $(OBJS) $(LDSCRIPT)
+	$(CC) $(LDFLAGS) -o $@ $(OBJS) -lc -lm -lnosys
+
+$(TARGET).bin: $(TARGET).elf
+	$(OBJCOPY) -O binary $< $@
+
+$(TARGET).hex: $(TARGET).elf
+	$(OBJCOPY) -O ihex $< $@
+
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(OBJDIR)/%.o: %.s
+	@mkdir -p $(dir $@)
+	$(CC) $(MCU) -c -o $@ $<
+
+size: $(TARGET).elf
+	$(SIZE) $<
+
+clean:
+	rm -rf $(BUILD)
+
+flash: $(TARGET).hex
+	openocd -f interface/stlink.cfg -f target/stm32f1x.cfg \
+	        -c "program $(TARGET).hex verify reset exit"
+
+.PHONY: all size clean flash

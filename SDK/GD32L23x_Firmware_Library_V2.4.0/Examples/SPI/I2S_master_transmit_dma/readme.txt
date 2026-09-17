@@ -1,0 +1,45 @@
+/*!
+    \file    readme.txt
+    \brief   description of I2S master send using DMA
+
+  version 2026-02-02, V2.4.0, firmware for GD32L23x
+*/
+
+/*
+    Copyright (c) 2026, GigaDevice Semiconductor Inc.
+
+    Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice, this
+       list of conditions and the following disclaimer.
+    2. Redistributions in binary form must reproduce the above copyright notice,
+       this list of conditions and the following disclaimer in the documentation
+       and/or other materials provided with the distribution.
+    3. Neither the name of the copyright holder nor the names of its contributors
+       may be used to endorse or promote products derived from this software without
+       specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+OF SUCH DAMAGE.
+*/
+
+  This example is based on two GD32L233R-EVAL-V1.1/GD32L235R-EVAL-V1.0 board, it shows I2S1 master send 
+using DMA mode. In this demo, I2S1 is operated as the master transmitter and it will 
+send the data in the i2s1_send array through I2S1.
+
+  The demo doesn't perform the data transfer actually, which is due to no specific 
+slave. In the specific application, we must connect another I2S slave.
+
+  I2S0 WS PIN(PB9)
+  I2S0 CK PIN(PB13)
+  I2S0 SD PIN(PB15)
+  
